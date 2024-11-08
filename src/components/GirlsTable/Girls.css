@@ -1,0 +1,12 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Az oszlopok azonos szélességűek lesznek */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    width: 10%; /* Állítsd be az oszlop szélességét, ha szükséges */
+}
