@@ -8,3 +8,6 @@ th, td {
     text-align: center;
     width: 110px; /* Állítsd be az oszlop szélességét, ha szükséges */
 }
+.girl-bg{
+    background-color: #93C47D;
+}
