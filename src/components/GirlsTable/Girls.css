@@ -2,15 +2,45 @@ table {
     border-collapse: collapse;
 }
 
+
 th,
 td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;
-    width: 110px;
-    /* Állítsd be az oszlop szélességét, ha szükséges */
+    width: 200px;
+    white-space: nowrap;
+    /* Ha nem akarod a sortörést */
+}
+
+.girl-name {
+    width: 200px !important;
 }
 
 .girl-bg {
     background-color: #93C47D;
+}
+
+
+.number-input {
+    text-align: center;
+    width: 50px;
+    padding: 8px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background-color: transparent !important;
+}
+
+.number-td:hover {
+    border: 2px solid #93C47D;
+    box-shadow: 0 0 5px #93C47D;
+}
+
+
+
+
+.number-td:focus-within,
+input:focus {
+    background-color: #62b63b69;
 }

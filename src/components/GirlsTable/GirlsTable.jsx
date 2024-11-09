@@ -16,7 +16,7 @@ const GirlsTable = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th rowSpan="2">ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</th>
+                            <th>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</th>
                             <th rowSpan="2">{sum}</th>
                             <th rowSpan="2">{cash}</th>
                             <th rowSpan="2">{card}</th>

@@ -24,21 +24,21 @@ const GirlsTableRow = ({ girl, cash, setCash, card, setCard }) => {
 
     return (
         <tr>
-            <td>{girl}</td>
+            <td className='girl-name'>{girl}</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
             {serviceData.map((_, index) => (
                 <React.Fragment key={index}>
-                    <td>
-                        <input
+                    <td className='number-td'>
+                        <input className='number-input'
                             type="number"
                             value={values[index].cash === 0 ? '' : values[index].cash}
                             onChange={(e) => handleInputChange(index, 'cash', e.target.value)}
                         />
                     </td>
-                    <td>
-                        <input
+                    <td className='number-td'>
+                        <input className='number-input'
                             type="number"
                             value={values[index].card === 0 ? '' : values[index].card}
                             onChange={(e) => handleInputChange(index, 'card', e.target.value)}
