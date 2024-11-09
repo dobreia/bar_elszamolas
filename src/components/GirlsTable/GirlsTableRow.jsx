@@ -6,6 +6,7 @@ const GirlsTableRow = ({ girl, cash, setCash, card, setCard }) => {
         serviceData.map(() => ({ cash: 0, card: 0 }))
     );
 
+
     const handleInputChange = (index, field, newValue) => {
         const updatedValues = [...values];
         updatedValues[index][field] = newValue === '' ? '' : parseInt(newValue, 10) || 0;
@@ -20,26 +21,32 @@ const GirlsTableRow = ({ girl, cash, setCash, card, setCard }) => {
         }
     };
 
+
     return (
         <tr>
             <td>{girl}</td>
-            <td className='girl-bg'>{cash}</td>
-            <td className='girl-bg'>{card}</td>
+            <td className='girl-bg'>0</td>
+            <td className='girl-bg'>0</td>
+            <td className='girl-bg'>0</td>
             {serviceData.map((_, index) => (
-                <td key={index}>
-                    <input
-                        type="number"
-                        value={values[index].cash === 0 ? '' : values[index].cash}
-                        onChange={(e) => handleInputChange(index, 'cash', e.target.value)}
-                    />
-                    <input
-                        type="number"
-                        value={values[index].card === 0 ? '' : values[index].card}
-                        onChange={(e) => handleInputChange(index, 'card', e.target.value)}
-                    />
-                </td>
+                <React.Fragment key={index}>
+                    <td>
+                        <input
+                            type="number"
+                            value={values[index].cash === 0 ? '' : values[index].cash}
+                            onChange={(e) => handleInputChange(index, 'cash', e.target.value)}
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="number"
+                            value={values[index].card === 0 ? '' : values[index].card}
+                            onChange={(e) => handleInputChange(index, 'card', e.target.value)}
+                        />
+                    </td>
+                </React.Fragment>
             ))}
-        </tr>
+        </tr >
     );
 };
 

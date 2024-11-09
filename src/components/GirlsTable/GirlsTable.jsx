@@ -6,9 +6,9 @@ import serviceData from './ServiceData';
 const GirlsTable = () => {
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
-
+    const sum = card + cash;
     // Összeg kiszámítása az aktuális állapotok alapján
-    const sum = cash + card;
+
 
     return (
         <div>

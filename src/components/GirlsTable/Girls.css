@@ -2,12 +2,15 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;
-    width: 110px; /* Állítsd be az oszlop szélességét, ha szükséges */
+    width: 110px;
+    /* Állítsd be az oszlop szélességét, ha szükséges */
 }
-.girl-bg{
+
+.girl-bg {
     background-color: #93C47D;
 }
