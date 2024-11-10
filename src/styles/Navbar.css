@@ -1,9 +1,13 @@
 .navbar {
+    /*position: fixed;
+    top: 0;*/
+    width: 100%;
     display: flex;
     justify-content: center;
-    height: auto;
+    height: 40px;
     background-color: black;
     color: white;
+    z-index: 1000;
 }
 
 .nav-item {
@@ -12,6 +16,24 @@
     text-decoration: none;
     border-right: 1px black solid;
     border-left: 1px black solid;
+}
+
+.service-row {
+    /*position: sticky;
+    box-shadow: 0 0 0 1px inset #000;
+    top: 39px;*/
+    background-color: #fff;
+    border: 1px black solid;
+    z-index: 999;
+}
+
+.cash-card-row {
+    /*position: sticky;
+    box-shadow: 0 0 0 1px inset #000;
+    top: 75px;*/
+    background-color: #fff;
+    border: 1px black solid;
+    z-index: 998;
 }
 
 .nav-item.active,

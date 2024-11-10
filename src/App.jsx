@@ -4,7 +4,6 @@ import GirlsTable from './components/GirlsTable/GirlsTable';
 import GirlsName from './components/GirlsName';
 import Navbar from './components/Navbar';
 import addGirlsData from './database/AddGirlsData';
-import deleteDuplicateGirls from './database/DeleteDuplicateGirls';
 import './styles/Girls.css'
 import './styles/Navbar.css'
 import './styles/GirlsName.css'

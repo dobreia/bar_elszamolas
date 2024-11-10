@@ -14,7 +14,7 @@ const GirlsTable = ({ girlsName }) => {
             <div>
                 <table>
                     <thead>
-                        <tr>
+                        <tr className='service-row'>
                             <th>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</th>
                             <th rowSpan="2">{sum}</th>
                             <th rowSpan="2">{cash}</th>
@@ -27,7 +27,7 @@ const GirlsTable = ({ girlsName }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr className='cash-card-row'>
                             <td>Aktuális lányok</td>
                             <td className='girl-bg'>Összesen</td>
                             <td className='girl-bg'>Készpénz</td>

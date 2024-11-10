@@ -1,6 +1,6 @@
-/*import { db } from './firebase-config';
+import { db } from './firebase-config';
 import { collection, setDoc, doc } from 'firebase/firestore';
-
+import girlsData from './GirlsData';
 const addGirlsData = async () => {
     try {
         const collectionRef = collection(db, "girls");
@@ -16,4 +16,4 @@ const addGirlsData = async () => {
     }
 };
 
-export default addGirlsData*/
+export default addGirlsData

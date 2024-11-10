@@ -1,5 +1,6 @@
 input[type="number"] {
-    -moz-appearance: textfield; /* Firefoxhoz */
+    -moz-appearance: textfield;
+    /* Firefoxhoz */
 }
 
 input[type="number"]::-webkit-inner-spin-button,
