@@ -12,7 +12,7 @@ import './styles/Navbar.css'
 function App() {
   return (
     <div>
-      <Router>
+      <Router basename="/bar_elszamolas">
         <Navbar />
         <Routes>
           <Route path="/" element={<GirlsTable />} />
