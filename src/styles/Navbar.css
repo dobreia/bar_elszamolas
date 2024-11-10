@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    background-color: black;
+    color: white;
+}
+
+.nav-item{
+    margin: 10px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-item:hover{
+    color: rgb(155, 155, 155);
+}
