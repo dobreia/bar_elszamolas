@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
 import serviceData from '../../database/ServiceData';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../database/firebase-config'; // Az adatbázisod konfiguráció
 
-const GirlsTable = () => {
+
+const GirlsTable = ({ girlsName }) => {
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
     const sum = card + cash;
-
-    const [girlsName, setGirlsName] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "girls"));
-                const girlsList = querySnapshot.docs.map(doc => doc.data().name);
-                setGirlsName(girlsList);
-            } catch (error) {
-                console.error("Hiba történt az adatok lekérése közben.", error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
 
 
     return (

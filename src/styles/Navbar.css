@@ -6,12 +6,17 @@
     color: white;
 }
 
-.nav-item{
+.nav-item {
     margin: 10px 10px;
     color: white;
     text-decoration: none;
+    border-right: 1px black solid;
+    border-left: 1px black solid;
 }
 
-.nav-item:hover{
-    color: rgb(155, 155, 155);
+.nav-item.active,
+.nav-item:hover {
+    background-color: #7a7a7a;
+    margin: 0;
+    padding: 10px;
 }

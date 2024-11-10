@@ -1,0 +1,19 @@
+.girl-row {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    margin: 5px auto; /* Ez középre helyezi a sort, és ad egy kis margót */
+}
+
+.girl-row img {
+    width: 20px; /* Az ikon mérete */
+    height: 20px;
+    cursor: pointer; /* Ha kattinthatóvá szeretnéd tenni */
+}
+
+.girl-row:hover{
+    box-shadow: 0 0 0 1px inset #000;
+    border-radius: 5px;
+}

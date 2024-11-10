@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div className='navbar'>
-            <Link className='nav-item' to="/">Lányok</Link>
-            <Link className='nav-item' to="/girlsName">Lányok nevei</Link>
+            <NavLink className='nav-item' to="/">Lányok</NavLink>
+            <NavLink className='nav-item' to="/girlsName">Lányok nevei</NavLink>
         </div>
     )
 }
