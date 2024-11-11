@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../database/firebase-config'; // Az adatbázis konfigurációdat tartalmazó fájl
 import xIcon from '../assets/x-icon.svg';
 import deleteGirl from '../database/DeleteGirl';
 import AddGirl from '../database/AddGirl';
 
-
-const GirlsName = ({ girlsName, setGirlsName }) => {
+const GirlsName = ({ setGirlsName }) => {
+    const [girlsName, setGirlsNameState] = useState([]);
     const [newGirlName, setNewGirlName] = useState('');
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, 'girls'), (snapshot) => {
+            const girlsList = snapshot.docs.map(doc => doc.data().name);
+            setGirlsNameState(girlsList);
+        });
+
+        // Takarítás a hallgató törléséhez a komponens leszerelésekor
+        return () => unsubscribe();
+    }, []);
 
     const handleAdd = async (girlName) => {
         if (girlName.trim() === '') {
@@ -14,7 +26,6 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
         }
         try {
             await AddGirl(girlName);
-            setGirlsName(prevGirls => [girlName, ...prevGirls]);
             setNewGirlName('');
         } catch {
             console.error("Hiba történt a lány hozzáadása során.");
@@ -24,7 +35,6 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
     const handleDelete = async (girlName) => {
         try {
             await deleteGirl(girlName); // Az adatbázisból törlés
-            setGirlsName(prevGirls => prevGirls.filter(girl => girl !== girlName)); // Az állapot frissítése
         } catch (error) {
             console.error('Hiba történt a törlés során.', error);
         }
