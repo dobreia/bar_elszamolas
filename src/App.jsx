@@ -34,7 +34,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<GirlsTable girlsName={girlsName} />} />
-          <Route path='/girlsName' element={<GirlsName girlsName={girlsName} />} />
+          <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName}/>} />
         </Routes>
       </Router>
 
