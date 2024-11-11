@@ -4,16 +4,51 @@
     justify-content: space-between;
     align-items: center;
     width: 600px;
-    margin: 5px auto; /* Ez középre helyezi a sort, és ad egy kis margót */
+    margin: 5px auto;
+    /* Ez középre helyezi a sort, és ad egy kis margót */
 }
 
 .girl-row img {
-    width: 20px; /* Az ikon mérete */
+    width: 20px;
+    /* Az ikon mérete */
     height: 20px;
-    cursor: pointer; /* Ha kattinthatóvá szeretnéd tenni */
+    cursor: pointer;
+    /* Ha kattinthatóvá szeretnéd tenni */
 }
 
-.girl-row:hover{
+.girl-row:hover {
     box-shadow: 0 0 0 1px inset #000;
     border-radius: 5px;
+}
+
+.new-girl {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+    margin: 30px auto 5px auto;
+}
+
+.new-girl-input {
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 450px;
+    padding: 10px 10px;
+}
+.new-girl-btn{
+    height: 30px;
+    margin-right: 25px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.new-girl-btn:hover{
+    background-color: #d7d7d7;
+}
+
+.new-girl-btn:active{
+    background-color: #fff;
 }

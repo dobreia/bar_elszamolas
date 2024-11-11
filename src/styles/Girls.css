@@ -51,6 +51,6 @@ td {
 
 
 .number-td:focus-within,
-input:focus {
+.number.input:focus {
     background-color: #62b63b69;
 }
