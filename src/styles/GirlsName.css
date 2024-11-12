@@ -57,6 +57,10 @@
     cursor: pointer;
 }
 
+.actions img:hover {
+    transform: scale(1.1);
+}
+
 .remove {
     width: 30px;
     width: 30px;
