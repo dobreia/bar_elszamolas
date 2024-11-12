@@ -1,30 +1,26 @@
-.girl-row {
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px;
-    margin: 5px auto;
-    /* Ez középre helyezi a sort, és ad egy kis margót */
-}
-
-.girl-row:hover {
+.girl-row-container:hover {
     box-shadow: 0 0 0 1px inset #000;
     border-radius: 5px;
 }
 
-.girl-row.editing:hover {
+.edit-girlcontainer:hover {
     box-shadow: none;
-    ;
+
 }
 
-.new-girl {
+.container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 600px;
-    margin: 30px auto 5px auto;
+    margin: 5px auto;
+    padding: 10px 15px
 }
+
+.new-girl-container {
+    margin-top: 30px;
+}
+
 
 .new-girl-input,
 .edit-girl-input {
@@ -35,19 +31,21 @@
     padding: 10px 10px;
 }
 
-.new-girl-btn {
+
+.btn {
     height: 30px;
-    margin-right: 25px;
+    width: 81px;
+    margin-right: -8px;
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.new-girl-btn:hover {
+.btn:hover {
     background-color: #d7d7d7;
 }
 
-.new-girl-btn:active {
+.btn:active {
     background-color: #fff;
 }
 

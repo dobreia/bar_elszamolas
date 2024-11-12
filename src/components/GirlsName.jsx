@@ -63,8 +63,8 @@ const GirlsName = ({ setGirlsName }) => {
     };
 
     return (
-        <div className='container'>
-            <div className="new-girl">
+        <div>
+            <div className="new-girl-container container">
                 <input
                     className='new-girl-input'
                     placeholder='Adj hozzá új nevet!'
@@ -72,20 +72,20 @@ const GirlsName = ({ setGirlsName }) => {
                     value={newGirlName}
                     onChange={(e) => setNewGirlName(e.target.value)}
                 />
-                <button onClick={() => handleAdd(newGirlName)} className='new-girl-btn'>Hozzáadás</button>
+                <button onClick={() => handleAdd(newGirlName)} className='new-girl-btn btn'>Hozzáadás</button>
             </div>
             {girlsName.map((girl, index) => (
-                <div className={`girl-row ${editIndex === index ? 'editing' : ''}`} key={girl.id}>
+                <div className={editIndex === index ? 'edit-girl-container container' : 'girl-row-container container'} key={girl.id}>
                     {editIndex === index ? (
-                        <div>
+                        <>
                             <input
                                 className='edit-girl-input'
                                 type="text"
                                 value={editedGirlName}
                                 onChange={handleEditChange}
                             />
-                            <button className onClick={() => handleEditSave(girl.id)}>Mentés</button>
-                        </div>
+                            <button className="edit-girl-btn btn" onClick={() => handleEditSave(girl.id)}>Mentés</button>
+                        </>
                     ) : (
                         <>
                             <span>{girl.name}</span>
