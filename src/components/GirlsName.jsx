@@ -5,6 +5,7 @@ import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
 import deleteGirl from '../database/DeleteGirl';
 import AddGirl from '../database/AddGirl';
+import EditGirl from '../database/EditGirl';
 
 const GirlsName = ({ setGirlsName }) => {
     const [girlsName, setGirlsNameState] = useState([]);
@@ -13,9 +14,9 @@ const GirlsName = ({ setGirlsName }) => {
     const [editedGirlName, setEditedGirlName] = useState(''); // Az új név tárolása szerkesztés alatt
 
     useEffect(() => {
-        // Lekérdezés az adatbázisból
+        // Lekérdezés az adatbázisból az id-kkal együtt
         const unsubscribe = onSnapshot(collection(db, 'girls'), (snapshot) => {
-            const girlsList = snapshot.docs.map(doc => doc.data().name);
+            const girlsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setGirlsNameState(girlsList);
         });
 
@@ -35,9 +36,9 @@ const GirlsName = ({ setGirlsName }) => {
         }
     };
 
-    const handleDelete = async (girlName) => {
+    const handleDelete = async (girlID) => {
         try {
-            await deleteGirl(girlName);
+            await deleteGirl(girlID);
         } catch (error) {
             console.error('Hiba történt a törlés során.', error);
         }
@@ -52,12 +53,13 @@ const GirlsName = ({ setGirlsName }) => {
         setEditedGirlName(e.target.value);
     };
 
-    const handleEditSave = (index) => {
-        // Frissítsd az állapotot az új névvel
-        const updatedGirls = [...girlsName];
-        updatedGirls[index] = editedGirlName;
-        setGirlsNameState(updatedGirls);
-        setEditIndex(null); // Szerkesztés befejezése
+    const handleEditSave = async (girlID) => {
+        try {
+            await EditGirl(girlID, { name: editedGirlName });
+            setEditIndex(null); // Szerkesztés lezárása
+        } catch (error) {
+            console.error('Hiba történt a szerkesztés során.', error);
+        }
     };
 
     return (
@@ -73,32 +75,37 @@ const GirlsName = ({ setGirlsName }) => {
                 <button onClick={() => handleAdd(newGirlName)} className='new-girl-btn'>Hozzáadás</button>
             </div>
             {girlsName.map((girl, index) => (
-                <div className={`girl-row ${editIndex === index ? 'editing' : ''}`} key={index}>
+                <div className={`girl-row ${editIndex === index ? 'editing' : ''}`} key={girl.id}>
                     {editIndex === index ? (
-                        <input className='edit-girl-input'
-                            type="text"
-                            value={editedGirlName}
-                            onChange={handleEditChange}
-                            onBlur={() => handleEditSave(index)} // Szerkesztés mentése fókuszvesztéskor
-                            autoFocus
-                        />
+                        <div>
+                            <input
+                                className='edit-girl-input'
+                                type="text"
+                                value={editedGirlName}
+                                onChange={handleEditChange}
+                            />
+                            <button className onClick={() => handleEditSave(girl.id)}>Mentés</button>
+                        </div>
                     ) : (
-                        <span>{girl}</span>
+                        <>
+                            <span>{girl.name}</span>
+                            <div className='actions'>
+                                <img
+                                    className='remove'
+                                    src={xIcon}
+                                    alt="Remove icon"
+                                    onClick={() => handleDelete(girl.id)}
+                                />
+                                <img
+                                    className='edit'
+                                    src={editIcon}
+                                    alt="Edit icon"
+                                    onClick={() => handleEditClick(index, girl.name)}
+                                />
+                            </div>
+                        </>
                     )}
-                    <div className='actions'>
-                        <img
-                            className='remove'
-                            src={xIcon}
-                            alt="Remove icon"
-                            onClick={() => handleDelete(girl)}
-                        />
-                        <img
-                            className='edit'
-                            src={editIcon}
-                            alt="Edit icon"
-                            onClick={() => handleEditClick(index, girl)}
-                        />
-                    </div>
+
                 </div>
             ))}
         </div>
