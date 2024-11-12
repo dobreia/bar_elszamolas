@@ -8,21 +8,17 @@
     /* Ez középre helyezi a sort, és ad egy kis margót */
 }
 
-.girl-row img {
-    width: 20px;
-    /* Az ikon mérete */
-    height: 20px;
-    cursor: pointer;
-    /* Ha kattinthatóvá szeretnéd tenni */
-}
-
 .girl-row:hover {
     box-shadow: 0 0 0 1px inset #000;
     border-radius: 5px;
 }
 
-.new-girl {
+.girl-row.editing:hover {
+    box-shadow: none;
+    ;
+}
 
+.new-girl {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,14 +26,16 @@
     margin: 30px auto 5px auto;
 }
 
-.new-girl-input {
+.new-girl-input,
+.edit-girl-input {
     font-size: 16px;
     border: 1px solid black;
     border-radius: 5px;
     width: 450px;
     padding: 10px 10px;
 }
-.new-girl-btn{
+
+.new-girl-btn {
     height: 30px;
     margin-right: 25px;
     background-color: #fff;
@@ -45,10 +43,30 @@
     border: 1px solid black;
 }
 
-.new-girl-btn:hover{
+.new-girl-btn:hover {
     background-color: #d7d7d7;
 }
 
-.new-girl-btn:active{
+.new-girl-btn:active {
     background-color: #fff;
+}
+
+.actions {
+    display: flex;
+}
+
+.actions img {
+    cursor: pointer;
+}
+
+.remove {
+    width: 30px;
+    width: 30px;
+}
+
+.edit {
+    padding-top: 4px;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
 }
