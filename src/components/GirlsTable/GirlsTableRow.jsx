@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import serviceData from '../../database/ServiceData';
+import { removeSelectegGirl } from './RemoveSelectedGirls';
 
-const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard }) => {
+const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove }) => {
     const [values, setValues] = useState(
         serviceData.map(() => ({ cash: 0, card: 0 }))
     );
+
 
     const handleInputChange = (index, field, newValue) => {
         const updatedValues = [...values];
@@ -28,7 +30,7 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard }) => {
 
     return (
         <tr>
-            <td className='girl-name'>{girlsName}</td>
+            <td className='girl-name'><button onClick={onRemove}>Eltávolít</button>{girlsName}</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>

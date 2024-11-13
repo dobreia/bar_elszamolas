@@ -13,6 +13,11 @@ const GirlsTable = ({ girlsName }) => {
             setSelectedGirls(prevGirls => [...prevGirls, selectedGirl]);
         }
     };
+    const removeSelectedGirl = (girlToRemove) => {
+        setSelectedGirls(prevGirls => {
+            return prevGirls.filter(girl => girl !== girlToRemove);
+        });
+    };
 
     const sum = card + cash;
 
@@ -66,6 +71,7 @@ const GirlsTable = ({ girlsName }) => {
                                 girlsName={selectedGirl}
                                 cash={cash} setCash={setCash}
                                 card={card} setCard={setCard}
+                                onRemove={() => removeSelectedGirl(selectedGirl)}
                             />
                         ))}
                     </tbody>
