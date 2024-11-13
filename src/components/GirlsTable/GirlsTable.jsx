@@ -2,16 +2,35 @@ import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
 import serviceData from '../../database/ServiceData';
 
-
 const GirlsTable = ({ girlsName }) => {
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
-    const sum = card + cash;
+    const [selectedGirls, setSelectedGirls] = useState([]); // Állapot a kiválasztott lányokhoz
 
+    const handleSelectGirl = (e) => {
+        const selectedGirl = e.target.value;
+        if (selectedGirl && !selectedGirls.includes(selectedGirl)) {
+            setSelectedGirls(prevGirls => [...prevGirls, selectedGirl]);
+        }
+    };
+
+    const sum = card + cash;
 
     return (
         <div>
             <div>
+                <section className='section-girl-dropdown'>
+                    <p>Válassz ki egy lányt: </p>
+                    <select onChange={handleSelectGirl} value="">
+                        <option value="" disabled>Kiválasztás</option>
+                        {girlsName.map((girl, index) => (
+                            <option key={index} value={girl}>
+                                {girl}
+                            </option>
+                        ))}
+                    </select>
+                </section>
+
                 <table>
                     <thead>
                         <tr className='service-row'>
@@ -39,10 +58,10 @@ const GirlsTable = ({ girlsName }) => {
                                 </React.Fragment>
                             ))}
                         </tr>
-                        {girlsName.map((girlsName, index) => (
+                        {selectedGirls.map((selectedGirl, index) => (
                             <GirlsTableRow
                                 key={index}
-                                girlsName={girlsName}
+                                girlsName={selectedGirl}
                                 cash={cash} setCash={setCash}
                                 card={card} setCard={setCard}
                             />

@@ -13,6 +13,22 @@ table {
     border-collapse: collapse;
 }
 
+.section-girl-dropdown {
+    display: flex;
+    margin-left: 30px;
+}
+
+.section-girl-dropdown p {
+    font-size: 24px;
+    margin-top: 22px;
+    margin-bottom: 28px;
+}
+
+.section-girl-dropdown select {
+    font-size: 16px;
+    height: 30px;
+    margin: 25px 0 auto 10px;
+}
 
 th,
 td {

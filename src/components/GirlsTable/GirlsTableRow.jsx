@@ -6,7 +6,6 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard }) => {
         serviceData.map(() => ({ cash: 0, card: 0 }))
     );
 
-
     const handleInputChange = (index, field, newValue) => {
         const updatedValues = [...values];
         const oldNumericValue = updatedValues[index][field];
@@ -26,8 +25,6 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard }) => {
             setCard((prevCard) => prevCard + totalChange);
         }
     };
-
-
 
     return (
         <tr>
@@ -55,7 +52,7 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard }) => {
                     </td>
                 </React.Fragment>
             ))}
-        </tr >
+        </tr>
     );
 };
 
