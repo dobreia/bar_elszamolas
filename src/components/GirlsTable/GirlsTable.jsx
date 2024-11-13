@@ -24,9 +24,11 @@ const GirlsTable = ({ girlsName }) => {
                     <select onChange={handleSelectGirl} value="">
                         <option value="" disabled>Kiválasztás</option>
                         {girlsName.map((girl, index) => (
-                            <option key={index} value={girl}>
-                                {girl}
-                            </option>
+                            !selectedGirls.includes(girl) && (
+                                <option key={index} value={girl}>
+                                    {girl}
+                                </option>
+                            )
                         ))}
                     </select>
                 </section>
