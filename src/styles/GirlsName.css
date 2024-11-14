@@ -1,3 +1,7 @@
+.main-content{
+    margin-top: 70px;
+}
+
 .girl-row-container:hover {
     box-shadow: 0 0 0 1px inset #000;
     border-radius: 5px;

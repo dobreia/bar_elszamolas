@@ -9,21 +9,10 @@ import EditGirl from '../database/EditGirl';
 import '../styles/GirlsName.css'
 
 
-const GirlsName = ({ setGirlsName }) => {
-    const [girlsName, setGirlsNameState] = useState([]);
+const GirlsName = ({ girlsName, setGirlsName }) => {
     const [newGirlName, setNewGirlName] = useState('');
     const [editIndex, setEditIndex] = useState(null); // Szerkesztési állapotot tároló index
     const [editedGirlName, setEditedGirlName] = useState(''); // Az új név tárolása szerkesztés alatt
-
-    useEffect(() => {
-        // Lekérdezés az adatbázisból az id-kkal együtt
-        const unsubscribe = onSnapshot(collection(db, 'girls'), (snapshot) => {
-            const girlsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setGirlsNameState(girlsList);
-        });
-
-        return () => unsubscribe();
-    }, []);
 
     const handleAdd = async (girlName) => {
         if (girlName.trim() === '') {
@@ -65,7 +54,7 @@ const GirlsName = ({ setGirlsName }) => {
     };
 
     return (
-        <div>
+        <div className='main-content'>
             <div className="new-girl-container container">
                 <input
                     className='new-girl-input'
@@ -76,7 +65,7 @@ const GirlsName = ({ setGirlsName }) => {
                 />
                 <button onClick={() => handleAdd(newGirlName)} className='new-girl-btn btn'>Hozzáadás</button>
             </div>
-            {girlsName.map((girl, index) => (
+            {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
                 <div className={editIndex === index ? 'edit-girl-container container' : 'girl-row-container container'} key={girl.id}>
                     {editIndex === index ? (
                         <>

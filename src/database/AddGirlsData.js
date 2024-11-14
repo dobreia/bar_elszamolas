@@ -1,19 +1,21 @@
-import { db } from './firebase-config';
+/*import { db } from './firebase-config';
 import { collection, setDoc, doc } from 'firebase/firestore';
 import girlsData from './GirlsData';
-const addGirlsData = async () => {
+const uploadGirlsData = async () => {
     try {
         const collectionRef = collection(db, "girls");
 
+        let counter = 1; // Szám alapú ID kezdőértéke
         for (const girl of girlsData) {
-            // Használj egyedi azonosítót (pl. a lány neve alapján)
-            const docRef = doc(collectionRef, girl);
-            await setDoc(docRef, { name: girl }); // Ha már létezik, frissíti, ha nem, létrehozza
+            const docRef = doc(collectionRef, counter.toString()); // Szám alapú ID használata
+            await setDoc(docRef, { name: girl });
+            counter++; // Növeljük az ID-t
         }
-        console.log("Adatok sikeresen hozzáadva/frissítve!");
+
+        console.log("Adatok sikeresen feltöltve!");
     } catch (error) {
-        console.error("Hiba történt az adatok hozzáadása közben:", error);
+        console.error("Hiba történt az adatok feltöltése közben:", error);
     }
 };
 
-export default addGirlsData
+uploadGirlsData();*/

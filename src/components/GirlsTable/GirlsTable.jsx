@@ -15,6 +15,7 @@ const GirlsTable = ({ girlsName }) => {
             setSelectedGirls(prevGirls => [...prevGirls, selectedGirl]);
         }
     };
+
     const removeSelectedGirl = (girlToRemove) => {
         setSelectedGirls(prevGirls => {
             return prevGirls.filter(girl => girl !== girlToRemove);
@@ -30,10 +31,10 @@ const GirlsTable = ({ girlsName }) => {
                     <p>Válassz ki egy lányt: </p>
                     <select onChange={handleSelectGirl} value="">
                         <option value="" disabled>Kiválasztás</option>
-                        {girlsName.map((girl, index) => (
-                            !selectedGirls.includes(girl) && (
-                                <option key={index} value={girl}>
-                                    {girl}
+                        {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
+                            !selectedGirls.includes(girl.name) && (
+                                <option key={index} value={girl.name}>
+                                    {girl.name}
                                 </option>
                             )
                         ))}
@@ -81,6 +82,7 @@ const GirlsTable = ({ girlsName }) => {
             </div>
         </div>
     );
-}
+};
+
 
 export default GirlsTable;
