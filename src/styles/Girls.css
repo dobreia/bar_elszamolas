@@ -14,11 +14,8 @@ table {
     border-collapse: collapse;
 }
 
-.main-content {
-    margin-top: 40px;
-}
-
 .section-girl-dropdown {
+    margin-top: -20px;
     display: flex;
     margin-left: 30px;
 }

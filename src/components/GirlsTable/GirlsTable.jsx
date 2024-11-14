@@ -26,60 +26,58 @@ const GirlsTable = ({ girlsName }) => {
 
     return (
         <div className='main-content'>
-            <div>
-                <section className='section-girl-dropdown'>
-                    <p>Válassz ki egy lányt: </p>
-                    <select onChange={handleSelectGirl} value="">
-                        <option value="" disabled>Kiválasztás</option>
-                        {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
-                            !selectedGirls.includes(girl.name) && (
-                                <option key={index} value={girl.name}>
-                                    {girl.name}
-                                </option>
-                            )
-                        ))}
-                    </select>
-                </section>
+            <section className='section-girl-dropdown'>
+                <p>Válassz ki egy lányt: </p>
+                <select onChange={handleSelectGirl} value="">
+                    <option value="" disabled>Kiválasztás</option>
+                    {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
+                        !selectedGirls.includes(girl.name) && (
+                            <option key={index} value={girl.name}>
+                                {girl.name}
+                            </option>
+                        )
+                    ))}
+                </select>
+            </section>
 
-                <table>
-                    <thead>
-                        <tr className='service-row'>
-                            <th><p className='elso'>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</p></th>
-                            <th>{sum}</th>
-                            <th>{cash}</th>
-                            <th>{card}</th>
-                            {serviceData.map((service, index) => (
-                                <th key={`header-${index}`} colSpan="2">
-                                    {service.név}
-                                </th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className='cash-card-row'>
-                            <td>Aktuális lányok</td>
-                            <td className='girl-bg'>Összesen</td>
-                            <td className='girl-bg'>Készpénz</td>
-                            <td className='girl-bg'>Kártya</td>
-                            {serviceData.map((_, index) => (
-                                <React.Fragment key={index}>
-                                    <td>Készpénz</td>
-                                    <td>Kártya</td>
-                                </React.Fragment>
-                            ))}
-                        </tr>
-                        {selectedGirls.map((selectedGirl, index) => (
-                            <GirlsTableRow
-                                key={index}
-                                girlsName={selectedGirl}
-                                cash={cash} setCash={setCash}
-                                card={card} setCard={setCard}
-                                onRemove={() => removeSelectedGirl(selectedGirl)}
-                            />
+            <table>
+                <thead>
+                    <tr className='service-row'>
+                        <th><p className='elso'>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</p></th>
+                        <th>{sum}</th>
+                        <th>{cash}</th>
+                        <th>{card}</th>
+                        {serviceData.map((service, index) => (
+                            <th key={`header-${index}`} colSpan="2">
+                                {service.név}
+                            </th>
                         ))}
-                    </tbody>
-                </table>
-            </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className='cash-card-row'>
+                        <td>Aktuális lányok</td>
+                        <td className='girl-bg'>Összesen</td>
+                        <td className='girl-bg'>Készpénz</td>
+                        <td className='girl-bg'>Kártya</td>
+                        {serviceData.map((_, index) => (
+                            <React.Fragment key={index}>
+                                <td>Készpénz</td>
+                                <td>Kártya</td>
+                            </React.Fragment>
+                        ))}
+                    </tr>
+                    {selectedGirls.map((selectedGirl, index) => (
+                        <GirlsTableRow
+                            key={index}
+                            girlsName={selectedGirl}
+                            cash={cash} setCash={setCash}
+                            card={card} setCard={setCard}
+                            onRemove={() => removeSelectedGirl(selectedGirl)}
+                        />
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
