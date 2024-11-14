@@ -6,6 +6,8 @@ import editIcon from '../assets/edit-icon.png';
 import deleteGirl from '../database/DeleteGirl';
 import AddGirl from '../database/AddGirl';
 import EditGirl from '../database/EditGirl';
+import '../styles/GirlsName.css'
+
 
 const GirlsName = ({ setGirlsName }) => {
     const [girlsName, setGirlsNameState] = useState([]);

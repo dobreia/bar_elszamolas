@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import serviceData from '../../database/ServiceData';
-import { removeSelectegGirl } from './RemoveSelectedGirls';
+import xIcon from '../../assets/x-icon.svg';
+
 
 const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove }) => {
     const [values, setValues] = useState(
@@ -29,8 +30,13 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove }) =>
     };
 
     return (
-        <tr>
-            <td className='girl-name'><button onClick={onRemove}>Eltávolít</button>{girlsName}</td>
+        <tr className='girl-row'>
+            <td>
+                <div className='girl-name'>
+                    <img className='remove-girl-icon' onClick={onRemove} src={xIcon} alt="" />
+                    <span>{girlsName}</span>
+                </div>
+            </td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>

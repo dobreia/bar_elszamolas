@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
 import serviceData from '../../database/ServiceData';
+import '../../styles/Girls.css'
+
 
 const GirlsTable = ({ girlsName }) => {
     const [cash, setCash] = useState(0);
@@ -22,7 +24,7 @@ const GirlsTable = ({ girlsName }) => {
     const sum = card + cash;
 
     return (
-        <div>
+        <div className='main-content'>
             <div>
                 <section className='section-girl-dropdown'>
                     <p>Válassz ki egy lányt: </p>
@@ -41,10 +43,10 @@ const GirlsTable = ({ girlsName }) => {
                 <table>
                     <thead>
                         <tr className='service-row'>
-                            <th>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</th>
-                            <th rowSpan="2">{sum}</th>
-                            <th rowSpan="2">{cash}</th>
-                            <th rowSpan="2">{card}</th>
+                            <th><p className='elso'>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</p></th>
+                            <th>{sum}</th>
+                            <th>{cash}</th>
+                            <th>{card}</th>
                             {serviceData.map((service, index) => (
                                 <th key={`header-${index}`} colSpan="2">
                                     {service.név}
