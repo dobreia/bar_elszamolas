@@ -7,9 +7,11 @@ const deleteGirl = async (girlName) => {
         const q = query(collection(db, 'girls'), where('name', '==', girlName));
         const querySnapshot = await getDocs(q);
         if (!querySnapshot.empty) {
-            // Ha megtaláljuk, töröljük az első találatot (vagy az összes egyezést iterációval kezelheted)
-            const docId = querySnapshot.docs[0].id;
-            await deleteDoc(doc(db, 'girls', docId));
+            // Végigmegyünk az összes találaton, és töröljük őket
+            querySnapshot.forEach(async (document) => {
+                const docId = document.id; // Számalapú id
+                await deleteDoc(doc(db, 'girls', docId));
+            });
             console.log('Lány sikeresen törölve');
         } else {
             console.log('Nem található ilyen nevű lány az adatbázisban');

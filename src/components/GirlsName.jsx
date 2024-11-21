@@ -27,9 +27,9 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
         }
     };
 
-    const handleDelete = async (girlID) => {
+    const handleDelete = async (girlName) => {
         try {
-            await deleteGirl(girlID);
+            await deleteGirl(girlName);
         } catch (error) {
             console.error('Hiba történt a törlés során.', error);
         }
@@ -85,7 +85,7 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
                                     className='remove'
                                     src={xIcon}
                                     alt="Remove icon"
-                                    onClick={() => handleDelete(girl.id)}
+                                    onClick={() => handleDelete(girl.name)}
                                 />
                                 <img
                                     className='edit'
