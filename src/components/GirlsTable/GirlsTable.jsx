@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
 import serviceData from '../../database/ServiceData';
 import '../../styles/Girls.css'
+import addSelectedGirl from '../../database/AddSelectedGirl';
+import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../database/firebase-config';
 
 
 const GirlsTable = ({ girlsName }) => {
@@ -9,19 +12,33 @@ const GirlsTable = ({ girlsName }) => {
     const [card, setCard] = useState(0);
     const [selectedGirls, setSelectedGirls] = useState([]); // Állapot a kiválasztott lányokhoz
 
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, 'selectedGirls'), (snapshot) => {
+            const selectedGirlsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setSelectedGirls(selectedGirlsList);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
     const handleSelectGirl = (e) => {
         const selectedGirl = e.target.value;
-        if (selectedGirl && !selectedGirls.includes(selectedGirl)) {
+        if (selectedGirl && !selectedGirls.some(girl => girl.name === selectedGirl)) {
             setSelectedGirls(prevGirls => [...prevGirls, selectedGirl]);
+            addSelectedGirl(selectedGirl)
         }
     };
 
-    const removeSelectedGirl = (girlToRemove) => {
-        setSelectedGirls(prevGirls => {
-            return prevGirls.filter(girl => girl !== girlToRemove);
-        });
+    const removeSelectedGirl = async (girlToRemove) => {
+        try {
+            await deleteDoc(doc(db, 'selectedGirls', girlToRemove.id));
+            setSelectedGirls(prevGirls => {
+                return prevGirls.filter(girl => girl.id !== girlToRemove.id);
+            });
+        } catch (error) {
+            console.error('Hiba történt a törlés során:', error);
+        }
     };
-
     const sum = card + cash;
 
     return (
@@ -70,7 +87,7 @@ const GirlsTable = ({ girlsName }) => {
                     {selectedGirls.map((selectedGirl, index) => (
                         <GirlsTableRow
                             key={index}
-                            girlsName={selectedGirl}
+                            girlsName={selectedGirl.name}
                             cash={cash} setCash={setCash}
                             card={card} setCard={setCard}
                             onRemove={() => removeSelectedGirl(selectedGirl)}

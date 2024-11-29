@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from '../database/firebase-config';
 import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
 import deleteGirl from '../database/DeleteGirl';
