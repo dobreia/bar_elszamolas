@@ -1,0 +1,75 @@
+.services-main-content {
+    margin-top: 70px;
+}
+
+.services-row-container:hover {
+    box-shadow: 0 0 0 1px inset #000;
+    border-radius: 5px;
+}
+
+.services-edit-container:hover {
+    box-shadow: none;
+}
+
+.services-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+    margin: 5px auto;
+    padding: 10px 15px;
+}
+
+.services-new-container {
+    margin-top: 30px;
+}
+
+.services-new-input,
+.services-edit-input {
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 450px;
+    padding: 10px 10px;
+}
+
+.services-btn {
+    height: 30px;
+    width: 81px;
+    margin-right: -8px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.services-btn:hover {
+    background-color: #d7d7d7;
+}
+
+.services-btn:active {
+    background-color: #fff;
+}
+
+.services-actions {
+    display: flex;
+}
+
+.services-actions img {
+    cursor: pointer;
+}
+
+.services-actions img:hover {
+    transform: scale(1.1);
+}
+
+.services-remove {
+    width: 30px;
+    height: 30px;
+}
+
+.services-edit {
+    padding-top: 4px;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+}
