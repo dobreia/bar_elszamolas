@@ -3,10 +3,11 @@
 [x] a lányokat lenyíló menüből kiválasztani
 [ ] ne legyen benne a dropdownban az akit már kiválasztottunk 
 [ ] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
+[ ] a szolgáltatásokat az adatbázisból olvassa ki
 
 # szolgáltatások fül
-[ ] szolgáltatásokat felvinni adatbázisba
-[ ] szolgáltatások kilistázása
+[x] szolgáltatásokat felvinni adatbázisba
+[x] szolgáltatások kilistázása
 [ ] szolgáltatások hozzáadása
 [ ] szolgáltatások törlése
 [ ] szolgáltatások módosítása
