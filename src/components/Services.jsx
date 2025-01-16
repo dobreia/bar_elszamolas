@@ -1,9 +1,12 @@
 import React from 'react';
+import '../styles/Services.css'
 
-const Services = () => {
+const Services = ({ services }) => {
     return (
-        <div>
-            
+        <div className='container'>
+            {services.map((service, index) => (
+                <div><p>{service.name}</p></div>
+            ))}
         </div>
     );
 };

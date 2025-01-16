@@ -1,33 +1,31 @@
-.main-content{
+.girls-main-content {
     margin-top: 70px;
 }
 
-.girl-row-container:hover {
+.girls-row-container:hover {
     box-shadow: 0 0 0 1px inset #000;
     border-radius: 5px;
 }
 
-.edit-girlcontainer:hover {
+.girls-edit-container:hover {
     box-shadow: none;
-
 }
 
-.container {
+.girls-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 600px;
     margin: 5px auto;
-    padding: 10px 15px
+    padding: 10px 15px;
 }
 
-.new-girl-container {
+.girls-new-container {
     margin-top: 30px;
 }
 
-
-.new-girl-input,
-.edit-girl-input {
+.girls-new-input,
+.girls-edit-input {
     font-size: 16px;
     border: 1px solid black;
     border-radius: 5px;
@@ -35,8 +33,7 @@
     padding: 10px 10px;
 }
 
-
-.btn {
+.girls-btn {
     height: 30px;
     width: 81px;
     margin-right: -8px;
@@ -45,32 +42,32 @@
     border: 1px solid black;
 }
 
-.btn:hover {
+.girls-btn:hover {
     background-color: #d7d7d7;
 }
 
-.btn:active {
+.girls-btn:active {
     background-color: #fff;
 }
 
-.actions {
+.girls-actions {
     display: flex;
 }
 
-.actions img {
+.girls-actions img {
     cursor: pointer;
 }
 
-.actions img:hover {
+.girls-actions img:hover {
     transform: scale(1.1);
 }
 
-.remove {
+.girls-remove {
     width: 30px;
-    width: 30px;
+    height: 30px;
 }
 
-.edit {
+.girls-edit {
     padding-top: 4px;
     margin-left: 15px;
     width: 20px;

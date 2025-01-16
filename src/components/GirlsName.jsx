@@ -52,41 +52,46 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
     };
 
     return (
-        <div className='main-content'>
-            <div className="new-girl-container container">
+        <div className='girls-main-content'>
+            <div className="girls-new-container girls-container">
                 <input
-                    className='new-girl-input'
+                    className='girls-new-input'
                     placeholder='Adj hozzá új nevet!'
                     type="text"
                     value={newGirlName}
                     onChange={(e) => setNewGirlName(e.target.value)}
                 />
-                <button onClick={() => handleAdd(newGirlName)} className='new-girl-btn btn'>Hozzáadás</button>
+                <button onClick={() => handleAdd(newGirlName)} className='girls-btn'>Hozzáadás</button>
             </div>
             {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
-                <div className={editIndex === index ? 'edit-girl-container container' : 'girl-row-container container'} key={girl.id}>
+                <div
+                    className={editIndex === index
+                        ? 'girls-edit-container girls-container'
+                        : 'girls-row-container girls-container'}
+                    key={girl.id}
+                >
                     {editIndex === index ? (
                         <>
                             <input
-                                className='edit-girl-input'
+                                className='girls-edit-input'
                                 type="text"
                                 value={editedGirlName}
                                 onChange={handleEditChange}
                             />
-                            <button className="edit-girl-btn btn" onClick={() => handleEditSave(girl.id)}>Mentés</button>
+                            <button className="girls-btn" onClick={() => handleEditSave(girl.id)}>Mentés</button>
                         </>
                     ) : (
                         <>
                             <span>{girl.name}</span>
-                            <div className='actions'>
+                            <div className='girls-actions'>
                                 <img
-                                    className='remove'
+                                    className='girls-remove'
                                     src={xIcon}
                                     alt="Remove icon"
                                     onClick={() => handleDelete(girl.name)}
                                 />
                                 <img
-                                    className='edit'
+                                    className='girls-edit'
                                     src={editIcon}
                                     alt="Edit icon"
                                     onClick={() => handleEditClick(index, girl.name)}
@@ -94,11 +99,11 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
                             </div>
                         </>
                     )}
-
                 </div>
             ))}
         </div>
     );
+    
 };
 
 export default GirlsName;

@@ -11,6 +11,7 @@ import { db } from './database/firebase-config'; // Az adatbázisod konfiguráci
 function App() {
   // Központi állapot az adatokhoz
   const [girlsName, setGirlsName] = useState([]);
+  const [services, setServices] = useState([]);
 
 
   useEffect(() => {
@@ -23,7 +24,17 @@ function App() {
     return () => unsubscribe(); // Takarítás
   }, []);
 
-  
+  useEffect(() => {
+    // Valós idejű adatlekérés Firestore-ból
+    const unsubscribe = onSnapshot(collection(db, 'services'), (snapshot) => {
+      const servicesList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setServices(servicesList);
+    });
+
+    return () => unsubscribe(); // Takarítás
+  }, []);
+
+
 
 
 
@@ -35,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<GirlsTable girlsName={girlsName} />} />
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
-          <Route path='/services' element={<Services />} />
+          <Route path='/services' element={<Services services={services} />} />
         </Routes>
       </Router>
     </div>
