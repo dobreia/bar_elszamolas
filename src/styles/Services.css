@@ -20,6 +20,20 @@
     padding: 10px 15px;
 }
 
+.services-dropdown-content{
+    flex-direction: column;
+    align-items: start;
+    padding-left: 100px;
+}
+
+.services-dropdown-item{
+    width: 400px;
+    margin: 5px;
+}
+.services-dropdown-item span{
+    margin-left: 10px;
+}
+
 .services-new-container {
     margin-top: 30px;
 }
