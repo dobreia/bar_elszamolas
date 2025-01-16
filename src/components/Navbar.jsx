@@ -8,6 +8,7 @@ const Navbar = () => {
         <div className='navbar'>
             <NavLink className='nav-item' to="/">Lányok</NavLink>
             <NavLink className='nav-item' to="/girlsName">Lányok nevei</NavLink>
+            <NavLink className='nav-item' to="/services">Szolgáltatások</NavLink>
         </div>
     )
 }
