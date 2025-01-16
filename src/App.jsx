@@ -7,10 +7,11 @@ import Navbar from './components/Navbar';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from './database/firebase-config'; // Az adatbázisod konfiguráció
 
+
 function App() {
   // Központi állapot az adatokhoz
   const [girlsName, setGirlsName] = useState([]);
-  
+
 
   useEffect(() => {
     // Valós idejű adatlekérés Firestore-ból
@@ -21,6 +22,10 @@ function App() {
 
     return () => unsubscribe(); // Takarítás
   }, []);
+
+  
+
+
 
 
   return (

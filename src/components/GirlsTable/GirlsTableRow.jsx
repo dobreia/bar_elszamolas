@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import serviceData from '../../database/ServiceData';
+import serviceData from '../../database/Services/ServiceData';
 import xIcon from '../../assets/x-icon.svg';
 
 

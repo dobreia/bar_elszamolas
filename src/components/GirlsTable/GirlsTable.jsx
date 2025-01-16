@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
-import serviceData from '../../database/ServiceData';
+import serviceData from '../../database/Services/ServiceData';
 import '../../styles/Girls.css'
 import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
