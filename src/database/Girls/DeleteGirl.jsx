@@ -1,5 +1,5 @@
 import { deleteDoc, doc, collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from './firebase-config'; // Az adatbázis konfigurációd helye
+import { db } from '../firebase-config'; // Az adatbázis konfigurációd helye
 
 const deleteGirl = async (girlName) => {
     try {

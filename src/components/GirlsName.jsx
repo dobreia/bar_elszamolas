@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
-import deleteGirl from '../database/DeleteGirl';
-import AddGirl from '../database/AddGirl';
-import EditGirl from '../database/EditGirl';
+import deleteGirl from '../database/Girls/DeleteGirl';
+import AddGirl from '../database/Girls/AddGirl';
+import EditGirl from '../database/Girls/EditGirl';
 import '../styles/GirlsName.css'
 
 

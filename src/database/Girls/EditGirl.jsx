@@ -1,5 +1,5 @@
 import { doc, updateDoc } from 'firebase/firestore';
-import { db } from './firebase-config';
+import { db } from '../firebase-config';
 
 const EditGirl = async (girlID, newData) => {
     try {

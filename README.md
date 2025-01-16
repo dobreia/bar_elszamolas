@@ -1,6 +1,7 @@
 # lányok fül
 [ ] totál lány jutalék oszlop (szum)
 [x] a lányokat lenyíló menüből kiválasztani
+[ ] ne legyen benne a dropdownban az akit már kiválasztottunk 
 [ ] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
 
 # szolgáltatások fül

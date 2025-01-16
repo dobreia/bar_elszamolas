@@ -10,6 +10,7 @@ import { db } from './database/firebase-config'; // Az adatbázisod konfiguráci
 function App() {
   // Központi állapot az adatokhoz
   const [girlsName, setGirlsName] = useState([]);
+  
 
   useEffect(() => {
     // Valós idejű adatlekérés Firestore-ból
@@ -20,6 +21,7 @@ function App() {
 
     return () => unsubscribe(); // Takarítás
   }, []);
+
 
   return (
     <div>

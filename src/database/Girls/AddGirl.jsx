@@ -1,9 +1,9 @@
 import { doc, setDoc, collection, getDocs } from 'firebase/firestore';
-import { db } from './firebase-config';
+import { db } from '../firebase-config';
 
-const addSelectedGirl = async (girlName) => {
+const addGirl = async (girlName) => {
     try {
-        const collectionRef = collection(db, "selectedGirls");
+        const collectionRef = collection(db, "girls");
         const snapshot = await getDocs(collectionRef);
         let maxId = 0;
 
@@ -25,4 +25,4 @@ const addSelectedGirl = async (girlName) => {
     }
 }
 
-export default addSelectedGirl;
+export default addGirl;
