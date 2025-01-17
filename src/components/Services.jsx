@@ -64,9 +64,9 @@ const Services = ({ services, setServices }) => {
                 <div key={service.id}>
                     {/* Tab fejléc */}
                     <div
-                        className={editIndex === index
-                            ? 'services-edit-container services-container' // Szerkesztési állapot stílusa
-                            : 'services-row-container services-container' // Normál állapot stílusa
+                        className={openTab === index ?
+                            "services-edit-container services-container-open"
+                            : "services-row-container services-container"
                         }
                         onClick={() => toggleDropdown(index)} // Dropdown kezelés
                     >
