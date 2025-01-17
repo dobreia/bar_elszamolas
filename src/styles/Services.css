@@ -1,16 +1,9 @@
+/* ========== MAIN CONTAINER STYLES ========== */
 .services-main-content {
     margin-top: 70px;
 }
 
-.services-row-container:hover {
-    box-shadow: 0 0 0 1px inset #000;
-    border-radius: 5px;
-}
-
-.services-edit-container:hover {
-    box-shadow: none;
-}
-
+/* ========== ROW CONTAINER STYLES ========== */
 .services-container {
     display: flex;
     align-items: center;
@@ -35,9 +28,20 @@
     font-weight: 600;
 }
 
+.services-row-container:hover {
+    box-shadow: 0 0 0 1px inset #000;
+    border-radius: 5px;
+}
+
+.services-edit-container:hover {
+    box-shadow: none;
+}
+
+/* ========== DROPDOWN STYLES ========== */
 .services-dropdown-content {
     border-radius: 10px;
     margin-top: -20px;
+    display: flex;
     flex-direction: column;
     align-items: start;
     width: 515px;
@@ -48,52 +52,142 @@
 }
 
 .services-dropdown-item {
-    width: 400px;
-    margin: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
 }
 
-.services-dropdown-item span {
-    margin-left: 10px;
+
+
+.services-dropdown-item label {
+    flex: 0 0 80px;
+    text-align: left;
 }
 
-.services-new-container {
-    margin-top: 30px;
-}
-
-.services-new-input,
-.services-edit-input {
-    font-size: 16px;
-    border: 1px solid black;
+.services-dropdown-item input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    width: 450px;
-    padding: 10px 10px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.services-edit-dropdown-item label {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .services-edit-dropdown-input {
     font-size: 14px;
     margin-left: 5px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px 8px;
 }
 
+/* ========== FORM STYLES (NEW & EDIT INPUTS) ========== */
+.services-new-container {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.services-new-input,
+.services-edit-input {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 450px;
+    padding: 10px 10px;
+}
+
+.services-add-dropdown {
+    width: 580px;
+    padding: 20px 0 15px 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.services-add-dropdown .services-btn {
+    height: 34px;
+    padding: 1px 10px;
+    width: auto;
+}
+
+.service-new-button{
+    font-size: 14px;
+    height: 40px !important;
+    padding: 1px 10px;
+    width: auto;
+}
+
+
+.services-add-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 5px;
+}
+
+.services-add-dropdown-item label {
+    flex: 0 0 80px;
+}
+
+.services-add-dropdown-item input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ========== BUTTON STYLES ========== */
 .services-btn {
     height: 30px;
     width: 81px;
     margin-right: -8px;
     background-color: #fff;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
+
+}
+
+.service-new-button {
+    width: auto;
 }
 
 .services-btn:hover {
-    background-color: #d7d7d7;
+    background-color: #e2e2e2;
+    border: 1px solid #808080;
 }
 
 .services-btn:active {
     background-color: #fff;
 }
 
+.services-cancel-save-buttons {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+/* ========== ACTION ICONS STYLES ========== */
 .services-actions {
     display: flex;
 }
@@ -116,12 +210,4 @@
     margin-left: 15px;
     width: 20px;
     height: 20px;
-}
-
-.services-cancel-save-buttons {
-    width: 60%;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
 }

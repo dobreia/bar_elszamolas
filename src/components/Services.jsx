@@ -5,8 +5,15 @@ import '../styles/Services.css';
 
 const Services = ({ services, setServices }) => {
     const [openTab, setOpenTab] = useState(null); // Kibontott tab indexe
+    const [isAddActive, setIsAddActive] = useState(false);
     const [editIndex, setEditIndex] = useState(null); // Szerkesztési állapotot tároló index
     const [editedService, setEditedService] = useState({}); // Az aktuálisan szerkesztett adatokat tárolja
+    const [newService, setNewService] = useState({
+        name: '',
+        type: '',
+        price: '',
+        commission: ''
+    });
 
     // Dropdown kibontása vagy bezárása
     const toggleDropdown = (index) => {
@@ -31,6 +38,10 @@ const Services = ({ services, setServices }) => {
         setEditedService((prev) => ({ ...prev, [field]: value })); // Frissíti az adott mező értékét
     };
 
+    const handleAddChange = (field, value) => {
+        setNewService((prev) => ({ ...prev, [field]: value }));
+    };
+
     // Szerkesztett adatok mentése
     const handleEditSave = (serviceId) => {
         // Frissíti a `services` listát a mentett adatokkal
@@ -51,13 +62,49 @@ const Services = ({ services, setServices }) => {
         <div className="services-main-content">
             {/* Új szolgáltatás hozzáadása */}
             <div className="services-new-container services-container">
-                <input
-                    className="services-new-input"
-                    placeholder="Adj hozzá új szolgáltatást!"
-                    type="text"
-                />
-                <button className="services-btn">Hozzáadás</button>
+                <button onClick={() => setIsAddActive(true)} className='services-btn service-new-button'>Új szolgáltatás</button>
             </div>
+            {isAddActive && (
+                <>
+                    <div className='services-add-dropdown'>
+                        <p className='services-add-dropdown-item'>
+                            <label htmlFor="type">Típus</label>
+                            <input
+                                id="type"
+                                type="text"
+                                placeholder='Típus'
+
+                            />
+                        </p>
+                        <p className='services-add-dropdown-item'>
+                            <label htmlFor="price">Ár</label>
+                            <input
+                                id="price"
+                                type="number"
+                                placeholder='Ár'
+
+                            />
+                        </p>
+                        <p className='services-add-dropdown-item'>
+                            <label htmlFor="commission">Jutalék</label>
+                            <input
+                                id="commission"
+                                type="number"
+                                placeholder='Jutalék'
+
+                            />
+                        </p>
+                        <div className='services-cancel-save-buttons'>
+                            <button onClick={() => setIsAddActive(false)} className="services-btn">Mégse</button>
+                            <button className="services-btn">Hozzáadás</button>
+                        </div>
+                    </div>
+
+                </>
+
+            )}
+
+
 
             {/* Szolgáltatások listázása */}
             {services.map((service, index) => (
@@ -109,10 +156,11 @@ const Services = ({ services, setServices }) => {
                         <div className="services-container services-dropdown-content">
                             {/* Típus mező */}
                             <p className="services-dropdown-item">
-                                Típus:
+                                <label htmlFor="type">Típus</label>
                                 {editIndex === index ? (
                                     <input
                                         className='services-edit-dropdown-input'
+                                        id='type'
                                         type="text"
                                         value={editedService.type || ''}
                                         onChange={(e) => handleEditChange('type', e.target.value)}
@@ -124,10 +172,11 @@ const Services = ({ services, setServices }) => {
 
                             {/* Ár mező */}
                             <p className="services-dropdown-item">
-                                Ár:
+                                <label htmlFor="price">Ár</label>
                                 {editIndex === index ? (
                                     <input
                                         className='services-edit-dropdown-input'
+                                        id='price'
                                         type="number"
                                         value={editedService.price || ''}
                                         onChange={(e) => handleEditChange('price', e.target.value)}
@@ -139,10 +188,11 @@ const Services = ({ services, setServices }) => {
 
                             {/* Jutalék mező */}
                             <p className="services-dropdown-item">
-                                Jutalék:
+                                <label htmlFor="commission">Jutalék</label>
                                 {editIndex === index ? (
                                     <input
                                         className='services-edit-dropdown-input'
+                                        id='commission'
                                         type="number"
                                         value={editedService.commission || ''}
                                         onChange={(e) =>
