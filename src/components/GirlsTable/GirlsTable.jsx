@@ -6,8 +6,9 @@ import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
 
-
 const GirlsTable = ({ girlsName }) => {
+    console.log("girlsName prop:", girlsName);
+
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
     const [selectedGirls, setSelectedGirls] = useState([]); // Állapot a kiválasztott lányokhoz
@@ -47,13 +48,15 @@ const GirlsTable = ({ girlsName }) => {
                 <p>Válassz ki egy lányt: </p>
                 <select onChange={handleSelectGirl} value="">
                     <option value="" disabled>Kiválasztás</option>
-                    {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
-                        !selectedGirls.includes(girl.name) && (
+                    {girlsName
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .filter(girl => !selectedGirls.some(selected => selected.name === girl.name)) 
+                        .map((girl, index) => (
                             <option key={index} value={girl.name}>
                                 {girl.name}
                             </option>
-                        )
-                    ))}
+
+                        ))}
                 </select>
             </section>
 
