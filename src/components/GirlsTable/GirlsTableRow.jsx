@@ -43,20 +43,30 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove }) =>
             {serviceData.map((_, index) => (
                 <React.Fragment key={index}>
                     <td className='number-td'>
-                        <input className='number-input'
-                            type="number"
+                        <select
+                            className='number-input'
                             value={values[index].cash === 0 ? '' : values[index].cash}
                             onChange={(e) => handleInputChange(index, 'cash', e.target.value)}
                             onWheel={(e) => e.target.blur()}
-                        />
+                        >
+                            <option value=""></option>
+                            {[...Array(15)].map((_, i) => (
+                                <option className='dropdown' key={i + 1} value={i + 1}>{i + 1}</option>
+                            ))}
+                        </select>
                     </td>
                     <td className='number-td'>
-                        <input className='number-input'
+                        <select className='number-input'
                             type="number"
                             value={values[index].card === 0 ? '' : values[index].card}
                             onChange={(e) => handleInputChange(index, 'card', e.target.value)}
                             onWheel={(e) => e.target.blur()}
-                        />
+                        >
+                            <option value=""></option>
+                            {[...Array(15)].map((_, i) => (
+                                <option className='dropdown' key={i + 1} value={i + 1}>{i + 1}</option>
+                            ))}
+                        </select>
                     </td>
                 </React.Fragment>
             ))}
