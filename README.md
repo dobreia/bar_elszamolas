@@ -3,7 +3,7 @@
 [x] a lányokat lenyíló menüből kiválasztani
 [x] ne legyen benne a dropdownban az akit már kiválasztottunk 
 [x] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
-[ ] a szolgáltatásokat az adatbázisból olvassa ki
+[x] a szolgáltatásokat az adatbázisból olvassa ki
 [ ] a number inputokat az adatbázisból olvassa ki
 
 # szolgáltatások fül

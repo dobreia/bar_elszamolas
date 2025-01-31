@@ -92,6 +92,7 @@ const GirlsTable = ({ girlsName, services }) => {
                             girlsName={selectedGirl.name}
                             cash={cash} setCash={setCash}
                             card={card} setCard={setCard}
+                            services={services}
                             onRemove={() => removeSelectedGirl(selectedGirl)}
                         />
                     ))}
