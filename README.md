@@ -2,8 +2,9 @@
 [ ] totál lány jutalék oszlop (szum)
 [x] a lányokat lenyíló menüből kiválasztani
 [x] ne legyen benne a dropdownban az akit már kiválasztottunk 
-[ ] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
+[x] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
 [ ] a szolgáltatásokat az adatbázisból olvassa ki
+[ ] a number inputokat az adatbázisból olvassa ki
 
 # szolgáltatások fül
 [x] szolgáltatásokat felvinni adatbázisba

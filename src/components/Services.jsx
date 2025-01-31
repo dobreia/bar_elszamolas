@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
+import deleteService from '../database/Services/DeleteService';
 import '../styles/Services.css';
 
 const Services = ({ services, setServices }) => {
@@ -56,6 +57,14 @@ const Services = ({ services, setServices }) => {
     const handleCancelEdit = () => {
         setEditedService({});
         setEditIndex(null);
+    }
+
+    const handleDelete = async (serviceName) => {
+        try {
+            await deleteService(serviceName)
+        } catch (error) {
+            console.error("Hiba történt a törlés során", error);
+        }
     }
 
     return (
@@ -132,11 +141,13 @@ const Services = ({ services, setServices }) => {
 
                         {/* Szerkesztés és törlés ikonok (csak normál állapotban láthatók) */}
                         {editIndex === index ? null : (
-                            <div className="services-actions">
+                            <div className="services-actions" onClick={(e) => e.stopPropagation()}>
+
                                 <img
                                     className="services-remove"
                                     src={xIcon}
                                     alt="Remove icon"
+                                    onClick={() => handleDelete(service.name)}
                                 />
                                 <img
                                     className="services-edit"
