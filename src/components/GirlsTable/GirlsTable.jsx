@@ -89,6 +89,7 @@ const GirlsTable = ({ girlsName, services }) => {
                     {selectedGirls.map((selectedGirl, index) => (
                         <GirlsTableRow
                             key={index}
+                            girlID={selectedGirl.id}
                             girlsName={selectedGirl.name}
                             cash={cash} setCash={setCash}
                             card={card} setCard={setCard}

@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../database/firebase-config';
+import updateTransaction from '../../database/Transactions/updateTransaction';
 import xIcon from '../../assets/x-icon.svg';
 
-const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove, services }) => {
+const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services }) => {
     const [values, setValues] = useState([]);
 
-    // 🔄 Ha a `services` frissül, akkor a `values` is frissül
     useEffect(() => {
-        if (services.length > 0) {
-            setValues(services.map(() => ({ cash: 0, card: 0 })));
-        }
-    }, [services]);
+        const unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
+            const transactionList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-    const handleInputChange = (index, field, newValue) => {
-        if (!values[index]) return; // 🔴 Ha `values[index]` nem létezik, akkor ne fusson tovább
+            setValues(services.map(service => {
+                const transaction = transactionList.find(t => t.girlID === girlID && t.serviceID === service.id);
+                return transaction ?
+                    { cash: transaction.cash ?? 0, card: transaction.card ?? 0 } :
+                    { cash: "", card: "" };
+            }));
+        });
+
+        return () => unsubscribe();
+    }, [services, girlID]);
+
+    const handleInputChange = async (index, field, newValue) => {
+        if (!values[index]) return;
+
         const updatedValues = [...values];
         const oldNumericValue = updatedValues[index][field] || 0;
-        const numericValue = newValue === '' ? 0 : parseInt(newValue, 10) || 0;
+        const numericValue = newValue === '' ? "" : parseInt(newValue, 10) || "";
 
         updatedValues[index][field] = numericValue;
         setValues(updatedValues);
 
-        const servicePrice = services[index]?.price || 0; // 🔹 Biztosítsuk, hogy létező adatot használjunk
-        const totalChange = numericValue * servicePrice - oldNumericValue * servicePrice;
+        const servicePrice = services[index]?.price || 0;
+        const totalChange = (numericValue || 0) * servicePrice - oldNumericValue * servicePrice;
 
         if (field === 'cash') {
             setCash((prevCash) => prevCash + totalChange);
         } else if (field === 'card') {
             setCard((prevCard) => prevCard + totalChange);
         }
+
+        // Adatok mentése Firestore-ba
+        await updateTransaction(girlID, services[index].id, field, numericValue || 0);
     };
 
     return (
@@ -41,15 +56,14 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove, serv
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
             <td className='girl-bg'>0</td>
-            {services.map((_, index) => (
-                <React.Fragment key={index}>
+            {services.map((service, index) => (
+                <React.Fragment key={service.id}>
                     <td className='number-td'>
                         <select
                             className='number-input'
-                            value={values[index]?.cash === 0 ? '' : values[index]?.cash}
+                            value={values[index]?.cash}
                             onChange={(e) => handleInputChange(index, 'cash', e.target.value)}
                             onWheel={(e) => e.target.blur()}
-                            disabled={!values[index]} // 🔹 Ha nincs érték, akkor ne lehessen használni
                         >
                             <option value=""></option>
                             {[...Array(15)].map((_, i) => (
@@ -59,10 +73,9 @@ const GirlsTableRow = ({ girlsName, cash, setCash, card, setCard, onRemove, serv
                     </td>
                     <td className='number-td'>
                         <select className='number-input'
-                            value={values[index]?.card === 0 ? '' : values[index]?.card}
+                            value={values[index]?.card}
                             onChange={(e) => handleInputChange(index, 'card', e.target.value)}
                             onWheel={(e) => e.target.blur()}
-                            disabled={!values[index]} // 🔹 Ha nincs érték, akkor ne lehessen használni
                         >
                             <option value=""></option>
                             {[...Array(15)].map((_, i) => (
