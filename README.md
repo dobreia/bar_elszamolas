@@ -9,9 +9,9 @@
 # szolgáltatások fül
 [x] szolgáltatásokat felvinni adatbázisba
 [x] szolgáltatások kilistázása
-[ ] szolgáltatások hozzáadása
-[ ] szolgáltatások törlése
-[ ] szolgáltatások módosítása
+[x] szolgáltatások hozzáadása
+[x] szolgáltatások törlése
+[x] szolgáltatások módosítása
 [ ] keresés funkció 
 
 # pult fül

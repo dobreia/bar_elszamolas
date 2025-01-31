@@ -3,6 +3,7 @@ import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
 import deleteService from '../database/Services/DeleteService';
 import addService from '../database/Services/AddService';
+import EditService from '../database/Services/EditService';
 import '../styles/Services.css';
 
 const Services = ({ services, setServices }) => {
@@ -69,16 +70,21 @@ const Services = ({ services, setServices }) => {
 
 
     // Szerkesztett adatok mentése
-    const handleEditSave = (serviceId) => {
-        // Frissíti a `services` listát a mentett adatokkal
-        setServices((prevServices) =>
-            prevServices.map((service) =>
-                service.id === serviceId ? { ...service, ...editedService } : service
-            )
-        );
-        setEditIndex(null); // Szerkesztési állapot lezárása
-        setOpenTab(null); // Tab bezárása
+    const handleEditSave = async (serviceId) => {
+        try {
+            // Adatok frissítése Firestore-ban
+            await EditService(serviceId, editedService.name, editedService.type, editedService.price, editedService.commission);
+
+            console.log("Szolgáltatás sikeresen frissítve az adatbázisban!");
+
+            setEditIndex(null); // Kilépés a szerkesztési módból
+            setOpenTab(null); // Bezárjuk a szerkesztett tabot
+        } catch (error) {
+            console.error("Hiba történt a szerkesztés mentésekor:", error);
+            alert("Nem sikerült a mentés!");
+        }
     };
+
     const handleCancelEdit = () => {
         setEditedService({});
         setEditIndex(null);
