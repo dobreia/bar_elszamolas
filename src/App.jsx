@@ -46,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<GirlsTable girlsName={girlsName} />} />
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
-          <Route path='/services' element={<Services services={services} />} />
+          <Route path='/services' element={<Services services={services} setServices={setServices} />} />
         </Routes>
       </Router>
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import xIcon from '../assets/x-icon.svg';
 import editIcon from '../assets/edit-icon.png';
 import deleteService from '../database/Services/DeleteService';
+import addService from '../database/Services/AddService';
 import '../styles/Services.css';
 
 const Services = ({ services, setServices }) => {
@@ -39,9 +40,33 @@ const Services = ({ services, setServices }) => {
         setEditedService((prev) => ({ ...prev, [field]: value })); // Frissíti az adott mező értékét
     };
 
-    const handleAddChange = (field, value) => {
-        setNewService((prev) => ({ ...prev, [field]: value }));
+    const handleAdd = async () => {
+        // Ellenőrzés: minden mező ki van-e töltve
+        if (!newService.name || !newService.type || !newService.price || !newService.commission) {
+            alert("Minden mezőt ki kell tölteni!");
+            return;
+        }
+
+        try {
+            // Új szolgáltatás hozzáadása Firestore-hoz
+            await addService(newService.name, newService.type, newService.price, newService.commission);
+
+            // Mezők törlése
+            setNewService({
+                name: '',
+                type: '',
+                price: '',
+                commission: ''
+            });
+
+            // Hozzáadó form bezárása
+            setIsAddActive(false);
+        } catch (error) {
+            console.error("Hiba történt a szolgáltatás hozzáadásakor:", error);
+            alert("Hiba történt a szolgáltatás mentésekor.");
+        }
     };
+
 
     // Szerkesztett adatok mentése
     const handleEditSave = (serviceId) => {
@@ -77,12 +102,23 @@ const Services = ({ services, setServices }) => {
                 <>
                     <div className='services-add-dropdown'>
                         <p className='services-add-dropdown-item'>
+                            <label htmlFor="type">Név</label>
+                            <input
+                                id="type"
+                                type="text"
+                                placeholder='Név'
+                                value={newService.name}
+                                onChange={(e) => setNewService({ ...newService, name: e.target.value })}
+                            />
+                        </p>
+                        <p className='services-add-dropdown-item'>
                             <label htmlFor="type">Típus</label>
                             <input
                                 id="type"
                                 type="text"
                                 placeholder='Típus'
-
+                                value={newService.type}
+                                onChange={(e) => setNewService({ ...newService, type: e.target.value })}
                             />
                         </p>
                         <p className='services-add-dropdown-item'>
@@ -91,7 +127,8 @@ const Services = ({ services, setServices }) => {
                                 id="price"
                                 type="number"
                                 placeholder='Ár'
-
+                                value={newService.price}
+                                onChange={(e) => setNewService({ ...newService, price: e.target.value })}
                             />
                         </p>
                         <p className='services-add-dropdown-item'>
@@ -100,12 +137,13 @@ const Services = ({ services, setServices }) => {
                                 id="commission"
                                 type="number"
                                 placeholder='Jutalék'
-
+                                value={newService.commission}
+                                onChange={(e) => setNewService({ ...newService, commission: e.target.value })}
                             />
                         </p>
                         <div className='services-cancel-save-buttons'>
                             <button onClick={() => setIsAddActive(false)} className="services-btn">Mégse</button>
-                            <button className="services-btn">Hozzáadás</button>
+                            <button onClick={() => handleAdd()} className="services-btn">Hozzáadás</button>
                         </div>
                     </div>
 
