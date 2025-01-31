@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import GirlsTableRow from './GirlsTableRow';
-import serviceData from '../../database/Services/ServiceData';
 import '../../styles/Girls.css'
 import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
 
-const GirlsTable = ({ girlsName }) => {
+const GirlsTable = ({ girlsName, services }) => {
     console.log("girlsName prop:", girlsName);
 
     const [cash, setCash] = useState(0);
@@ -50,7 +49,7 @@ const GirlsTable = ({ girlsName }) => {
                     <option value="" disabled>Kiválasztás</option>
                     {girlsName
                         .sort((a, b) => a.name.localeCompare(b.name))
-                        .filter(girl => !selectedGirls.some(selected => selected.name === girl.name)) 
+                        .filter(girl => !selectedGirls.some(selected => selected.name === girl.name))
                         .map((girl, index) => (
                             <option key={index} value={girl.name}>
                                 {girl.name}
@@ -67,9 +66,9 @@ const GirlsTable = ({ girlsName }) => {
                         <th>{sum}</th>
                         <th>{cash}</th>
                         <th>{card}</th>
-                        {serviceData.map((service, index) => (
+                        {services.map((service, index) => (
                             <th key={`header-${index}`} colSpan="2">
-                                {service.név}
+                                {service.name}
                             </th>
                         ))}
                     </tr>
@@ -80,7 +79,7 @@ const GirlsTable = ({ girlsName }) => {
                         <td className='girl-bg'>Összesen</td>
                         <td className='girl-bg'>Készpénz</td>
                         <td className='girl-bg'>Kártya</td>
-                        {serviceData.map((_, index) => (
+                        {services.map((_, index) => (
                             <React.Fragment key={index}>
                                 <td>Készpénz</td>
                                 <td>Kártya</td>

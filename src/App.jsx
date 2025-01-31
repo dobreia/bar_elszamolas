@@ -44,7 +44,7 @@ function App() {
       <Router basename="/bar_elszamolas">
         <Navbar />
         <Routes>
-          <Route path="/" element={<GirlsTable girlsName={girlsName} />} />
+          <Route path="/" element={<GirlsTable girlsName={girlsName} services={services} />} />
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
           <Route path='/services' element={<Services services={services} setServices={setServices} />} />
         </Routes>
