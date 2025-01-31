@@ -4,7 +4,8 @@
 [x] ne legyen benne a dropdownban az akit már kiválasztottunk 
 [x] lehessen a készpénz kártya számokat legördülő mezőből kiválasztani, mint az excelben
 [x] a szolgáltatásokat az adatbázisból olvassa ki
-[ ] a number inputokat az adatbázisból olvassa ki
+[x] a number inputokat az adatbázisból olvassa ki
+[ ] frissüljenek jól a sum értékek is. Ha több kliens van nyitva jelenleg nem frissül
 
 # szolgáltatások fül
 [x] szolgáltatásokat felvinni adatbázisba
