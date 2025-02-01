@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from './database/firebase-config'; // Az adatbázisod konfiguráció
+import Navbar from './components/Navbar';
 import GirlsTable from './components/GirlsTable/GirlsTable';
 import GirlsName from './components/GirlsName';
 import Services from './components/Services';
-import Navbar from './components/Navbar';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from './database/firebase-config'; // Az adatbázisod konfiguráció
+import BarCounter from './components/BarCounter';
 
 
 function App() {
@@ -35,10 +36,6 @@ function App() {
   }, []);
 
 
-
-
-
-
   return (
     <div>
       <Router basename="/bar_elszamolas">
@@ -47,6 +44,8 @@ function App() {
           <Route path="/" element={<GirlsTable girlsName={girlsName} services={services} />} />
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
           <Route path='/services' element={<Services services={services} setServices={setServices} />} />
+          <Route path='/barCounter' element={<BarCounter />} />
+
         </Routes>
       </Router>
     </div>

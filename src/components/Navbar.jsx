@@ -9,6 +9,8 @@ const Navbar = () => {
             <NavLink className='nav-item' to="/">Lányok</NavLink>
             <NavLink className='nav-item' to="/girlsName">Lányok nevei</NavLink>
             <NavLink className='nav-item' to="/services">Szolgáltatások</NavLink>
+            <NavLink className='nav-item' to="/barCounter">Pult</NavLink>
+
         </div>
     )
 }
