@@ -9,6 +9,7 @@ import '../styles/Services.css';
 const Services = ({ services, setServices }) => {
     const [openTab, setOpenTab] = useState(null); // Kibontott tab indexe
     const [isAddActive, setIsAddActive] = useState(false);
+    const [isSearchActive, setIsSearchActive] = useState(false);
     const [editIndex, setEditIndex] = useState(null); // Szerkesztési állapotot tároló index
     const [editedService, setEditedService] = useState({}); // Az aktuálisan szerkesztett adatokat tárolja
     const [newService, setNewService] = useState({
@@ -102,7 +103,8 @@ const Services = ({ services, setServices }) => {
         <div className="services-main-content">
             {/* Új szolgáltatás hozzáadása */}
             <div className="services-new-container services-container">
-                <button onClick={() => setIsAddActive(true)} className='services-btn service-new-button'>Új szolgáltatás</button>
+                <button onClick={() => { setIsAddActive(true); setIsSearchActive(false) }} className='services-btn service-new-button'>Új szolgáltatás</button>
+                <button onClick={() => { setIsSearchActive(true); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
             </div>
             {isAddActive && (
                 <>
@@ -148,7 +150,10 @@ const Services = ({ services, setServices }) => {
                             />
                         </p>
                         <div className='services-cancel-save-buttons'>
-                            <button onClick={() => setIsAddActive(false)} className="services-btn">Mégse</button>
+                            <button onClick={() => {
+                                setIsAddActive(false);
+                                setNewService({ name: '', type: '', price: '', commission: '' });
+                            }} className="services-btn">Mégse</button>
                             <button onClick={() => handleAdd()} className="services-btn">Hozzáadás</button>
                         </div>
                     </div>
@@ -156,6 +161,19 @@ const Services = ({ services, setServices }) => {
                 </>
 
             )}
+            {isSearchActive && (
+                <>
+                    <div className='services-search-dropdown'>
+                        <div className='services-search-dropdown-item'>
+                            <input type="text" placeholder='Keresés...' />
+                        </div>
+                    </div>
+
+                </>
+            )}
+
+
+
 
 
 

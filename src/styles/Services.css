@@ -96,8 +96,10 @@
 
 /* ========== FORM STYLES (NEW & EDIT INPUTS) ========== */
 .services-new-container {
+    justify-content: start;
     margin-top: 30px;
     margin-bottom: 0;
+    gap: 25px;
 }
 
 .services-new-input,
@@ -121,21 +123,31 @@
     border-radius: 10px;
 }
 
+.services-search-dropdown {
+    width: 610px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 0px 15px;
+}
+
 .services-add-dropdown .services-btn {
     height: 34px;
     padding: 1px 10px;
     width: auto;
 }
 
-.service-new-button{
+.service-new-button,
+.service-search-button {
     font-size: 14px;
     height: 40px !important;
     padding: 1px 10px;
-    width: auto;
+    width: auto !important;
 }
 
 
-.services-add-dropdown-item {
+.services-add-dropdown-item,
+.services-search-dropdown-item {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -146,11 +158,18 @@
     flex: 0 0 80px;
 }
 
-.services-add-dropdown-item input {
+.services-add-dropdown-item input,
+.services-search-dropdown-item input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+}
+
+.services-search-dropdown-item input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #000000;
 }
 
 /* ========== BUTTON STYLES ========== */
@@ -164,9 +183,6 @@
 
 }
 
-.service-new-button {
-    width: auto;
-}
 
 .services-btn:hover {
     background-color: #e2e2e2;
