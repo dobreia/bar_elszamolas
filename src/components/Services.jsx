@@ -12,6 +12,8 @@ const Services = ({ services, setServices }) => {
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [editIndex, setEditIndex] = useState(null); // Szerkesztési állapotot tároló index
     const [editedService, setEditedService] = useState({}); // Az aktuálisan szerkesztett adatokat tárolja
+    const [searchQuery, setSearchQuery] = useState("");
+    const filteredServices = services.filter(service => service.name.toLowerCase().startsWith(searchQuery.toLowerCase()));
     const [newService, setNewService] = useState({
         name: '',
         type: '',
@@ -165,20 +167,20 @@ const Services = ({ services, setServices }) => {
                 <>
                     <div className='services-search-dropdown'>
                         <div className='services-search-dropdown-item'>
-                            <input type="text" placeholder='Keresés...' />
+                            <input
+                                type="text"
+                                placeholder='Keresés...'
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
                         </div>
                     </div>
 
                 </>
             )}
 
-
-
-
-
-
             {/* Szolgáltatások listázása */}
-            {services.map((service, index) => (
+            {filteredServices.map((service, index) => (
                 <div key={service.id}>
                     {/* Tab fejléc */}
                     <div
