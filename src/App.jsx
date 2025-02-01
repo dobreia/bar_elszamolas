@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import GirlsTable from './components/GirlsTable/GirlsTable';
 import GirlsName from './components/GirlsName';
 import Services from './components/Services';
-import BarCounter from './components/BarCounter';
+import BarCounter from './components/BarCounter/BarCounter';
 
 
 function App() {

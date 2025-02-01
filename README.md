@@ -16,7 +16,8 @@
 [x] keresés funkció 
 
 # pult fül
-[ ] létezik
+[x] létezik
+[ ] reszponzivtás bootstrappel
 [ ] a user csak kitölti a táblázatot és mentjük az adatokat
 
 # záró fül
