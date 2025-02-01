@@ -3,6 +3,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
 import updateTransaction from '../../database/Transactions/updateTransaction';
 import xIcon from '../../assets/x-icon.svg';
+import updateTotalSummary from '../../database/Summary/updateTotalSummary';
 
 const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services }) => {
     const [values, setValues] = useState([]);
@@ -43,6 +44,7 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
 
         // Adatok mentése Firestore-ba
         await updateTransaction(girlID, services[index].id, field, numericValue || 0);
+        await updateTotalSummary(services);
     };
 
     return (

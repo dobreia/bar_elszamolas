@@ -4,6 +4,8 @@ import '../../styles/Girls.css'
 import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
+import updateTotalSummary from '../../database/Summary/updateTotalSummary';
+
 
 const GirlsTable = ({ girlsName, services }) => {
     console.log("girlsName prop:", girlsName);
@@ -18,7 +20,19 @@ const GirlsTable = ({ girlsName, services }) => {
             setSelectedGirls(selectedGirlsList);
         });
 
-        return () => unsubscribe();
+        const unsubscribeSummary = onSnapshot(doc(db, "totalSummary", "01"), (docSnap) => {
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setCash(data.total_cash || 0);
+                setCard(data.total_card || 0);
+            }
+        });
+
+        return () => {
+            unsubscribe();
+            unsubscribeSummary();
+        }
+        
     }, []);
 
     const handleSelectGirl = (e) => {
