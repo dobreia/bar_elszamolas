@@ -13,7 +13,7 @@
 [x] szolgáltatások hozzáadása
 [x] szolgáltatások törlése
 [x] szolgáltatások módosítása
-[ ] keresés funkció 
+[x] keresés funkció 
 
 # pult fül
 [ ] létezik
