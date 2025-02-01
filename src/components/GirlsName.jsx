@@ -9,6 +9,10 @@ import '../styles/GirlsName.css'
 
 const GirlsName = ({ girlsName, setGirlsName }) => {
     const [newGirlName, setNewGirlName] = useState('');
+    const [isAddActive, setIsAddActive] = useState(false);
+    const [isSearchActive, setIsSearchActive] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const filteredGirlsName = girlsName.filter(girl => girl.name.toLowerCase().startsWith(searchQuery.toLowerCase()));
     const [editIndex, setEditIndex] = useState(null); // Szerkesztési állapotot tároló index
     const [editedGirlName, setEditedGirlName] = useState(''); // Az új név tárolása szerkesztés alatt
 
@@ -54,16 +58,39 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
     return (
         <div className='girls-main-content'>
             <div className="girls-new-container girls-container">
-                <input
-                    className='girls-new-input'
-                    placeholder='Adj hozzá új nevet!'
-                    type="text"
-                    value={newGirlName}
-                    onChange={(e) => setNewGirlName(e.target.value)}
-                />
-                <button onClick={() => handleAdd(newGirlName)} className='girls-btn'>Hozzáadás</button>
+                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='services-btn service-new-button'>Új lány</button>
+                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
             </div>
-            {girlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
+            {isAddActive && (
+                <>
+                    <div className="girls-new-container girls-container">
+                        <input
+                            className='girls-new-input'
+                            placeholder='Adj hozzá új nevet!'
+                            type="text"
+                            value={newGirlName}
+                            onChange={(e) => setNewGirlName(e.target.value)}
+                        />
+                        <button onClick={() => handleAdd(newGirlName)} className='girls-btn'>Hozzáadás</button>
+                    </div>
+                </>
+            )
+            }
+            {isSearchActive && (
+                <>
+                    <div className='girls-search-container girls-container'>
+                        <input
+                            className='girls-search-input'
+                            type="text"
+                            placeholder='Keresés...'
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+
+                </>
+            )}
+            {filteredGirlsName.sort((a, b) => a.name.localeCompare(b.name)).map((girl, index) => (
                 <div
                     className={editIndex === index
                         ? 'girls-edit-container girls-container'
@@ -103,7 +130,7 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
             ))}
         </div>
     );
-    
+
 };
 
 export default GirlsName;

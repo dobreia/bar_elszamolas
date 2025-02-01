@@ -165,15 +165,14 @@ const Services = ({ services, setServices }) => {
             )}
             {isSearchActive && (
                 <>
-                    <div className='services-search-dropdown'>
-                        <div className='services-search-dropdown-item'>
-                            <input
-                                type="text"
-                                placeholder='Keresés...'
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                        </div>
+                    <div className='services-search-container services-container'>
+                        <input
+                            className='services-search-input'
+                            type="text"
+                            placeholder='Keresés...'
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                     </div>
 
                 </>

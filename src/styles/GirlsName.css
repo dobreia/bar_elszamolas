@@ -20,12 +20,15 @@
     padding: 10px 15px;
 }
 
-.girls-new-container {
-    margin-top: 30px;
+.girls-new-container,
+.girls-search-container {
+    justify-content: start;
+    gap: 25px;
 }
 
 .girls-new-input,
-.girls-edit-input {
+.girls-edit-input,
+.girls-search-input {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
