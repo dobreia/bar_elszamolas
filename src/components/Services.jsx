@@ -105,8 +105,8 @@ const Services = ({ services, setServices }) => {
         <div className="services-main-content">
             {/* Új szolgáltatás hozzáadása */}
             <div className="services-new-container services-container">
-                <button onClick={() => { setIsAddActive(true); setIsSearchActive(false) }} className='services-btn service-new-button'>Új szolgáltatás</button>
-                <button onClick={() => { setIsSearchActive(true); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
+                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='services-btn service-new-button'>Új szolgáltatás</button>
+                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
             </div>
             {isAddActive && (
                 <>
