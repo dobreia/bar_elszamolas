@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
 import updateTransaction from '../../database/Transactions/updateTransaction';
 import xIcon from '../../assets/x-icon.svg';
 import updateTotalSummary from '../../database/Summary/updateTotalSummary';
+import updateCommissionSummary from '../../database/Summary/updateCommissionSummary';
 
 const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services }) => {
     const [values, setValues] = useState([]);
@@ -21,8 +22,20 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
                     { cash: "", card: "" };
             }));
         });
+        const unsubscribeCommissions = onSnapshot(doc(db, "commissions", `girl${girlID}`), (docSnap) => {
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setCommissionCash(data.commission_cash || 0);
+                setCommissionCard(data.commission_card || 0);
+            }
+        });
 
-        return () => unsubscribe();
+        return () => {
+            unsubscribe();
+            unsubscribeCommissions();
+        }
+
+
     }, [services, girlID]);
 
     const handleInputChange = async (index, field, newValue) => {
@@ -52,6 +65,7 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
         // Adatok mentése Firestore-ba
         await updateTransaction(girlID, services[index].id, field, numericValue || 0);
         await updateTotalSummary(services);
+        await updateCommissionSummary(girlID, services);
     };
     const commissionTotal = commissionCard + commissionCash
     return (
