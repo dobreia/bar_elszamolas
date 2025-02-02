@@ -56,16 +56,14 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
 
         if (field === 'cash') {
             setCash((prevCash) => prevCash + totalPriceChange);
-            setCommissionCash((prevCommissionCash) => prevCommissionCash + totalCommissionChange)
         } else if (field === 'card') {
             setCard((prevCard) => prevCard + totalPriceChange);
-            setCommissionCard((prevCommissionCard) => prevCommissionCard + totalCommissionChange)
         }
 
         // Adatok mentése Firestore-ba
         await updateTransaction(girlID, services[index].id, field, numericValue || 0);
         await updateTotalSummary(services);
-        await updateCommissionSummary(girlID, services);
+        //await updateCommissionSummary(girlID, services);
     };
     const commissionTotal = commissionCard + commissionCash
     return (

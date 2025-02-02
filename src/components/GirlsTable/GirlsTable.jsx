@@ -5,6 +5,8 @@ import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
 import updateTotalSummary from '../../database/Summary/updateTotalSummary';
+import removeSelectedGirl from './removeSelectedGirl';
+
 
 
 const GirlsTable = ({ girlsName, services }) => {
@@ -43,16 +45,7 @@ const GirlsTable = ({ girlsName, services }) => {
         }
     };
 
-    const removeSelectedGirl = async (girlToRemove) => {
-        try {
-            await deleteDoc(doc(db, 'selectedGirls', girlToRemove.id));
-            setSelectedGirls(prevGirls => {
-                return prevGirls.filter(girl => girl.id !== girlToRemove.id);
-            });
-        } catch (error) {
-            console.error('Hiba történt a törlés során:', error);
-        }
-    };
+
     const sum = card + cash;
 
     return (
@@ -108,7 +101,7 @@ const GirlsTable = ({ girlsName, services }) => {
                             cash={cash} setCash={setCash}
                             card={card} setCard={setCard}
                             services={services}
-                            onRemove={() => removeSelectedGirl(selectedGirl)}
+                            onRemove={() => removeSelectedGirl(selectedGirl, services)}
                         />
                     ))}
                 </tbody>
