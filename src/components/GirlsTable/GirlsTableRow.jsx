@@ -7,6 +7,8 @@ import updateTotalSummary from '../../database/Summary/updateTotalSummary';
 
 const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services }) => {
     const [values, setValues] = useState([]);
+    const [commissionCash, setCommissionCash] = useState(0);
+    const [commissionCard, setCommissionCard] = useState(0);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
@@ -34,19 +36,24 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
         setValues(updatedValues);
 
         const servicePrice = services[index]?.price || 0;
-        const totalChange = (numericValue || 0) * servicePrice - oldNumericValue * servicePrice;
+        const serviceCommission = services[index]?.commission || 0;
+        const totalPriceChange = (numericValue || 0) * servicePrice - oldNumericValue * servicePrice;
+        const totalCommissionChange = (numericValue || 0) * serviceCommission - oldNumericValue * serviceCommission;
+
 
         if (field === 'cash') {
-            setCash((prevCash) => prevCash + totalChange);
+            setCash((prevCash) => prevCash + totalPriceChange);
+            setCommissionCash((prevCommissionCash) => prevCommissionCash + totalCommissionChange)
         } else if (field === 'card') {
-            setCard((prevCard) => prevCard + totalChange);
+            setCard((prevCard) => prevCard + totalPriceChange);
+            setCommissionCard((prevCommissionCard) => prevCommissionCard + totalCommissionChange)
         }
 
         // Adatok mentése Firestore-ba
         await updateTransaction(girlID, services[index].id, field, numericValue || 0);
         await updateTotalSummary(services);
     };
-
+    const commissionTotal = commissionCard + commissionCash
     return (
         <tr className='girl-row'>
             <td>
@@ -55,9 +62,9 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
                     <span>{girlsName}</span>
                 </div>
             </td>
-            <td className='girl-bg'>0</td>
-            <td className='girl-bg'>0</td>
-            <td className='girl-bg'>0</td>
+            <td className='girl-bg'>{commissionTotal.toLocaleString('hu-HU')}</td>
+            <td className='girl-bg'>{commissionCash.toLocaleString('hu-HU')}</td>
+            <td className='girl-bg'>{commissionCard.toLocaleString('hu-HU')}</td>
             {services.map((service, index) => (
                 <React.Fragment key={service.id}>
                     <td className='number-td'>

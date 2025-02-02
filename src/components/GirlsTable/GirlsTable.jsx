@@ -32,7 +32,7 @@ const GirlsTable = ({ girlsName, services }) => {
             unsubscribe();
             unsubscribeSummary();
         }
-        
+
     }, []);
 
     const handleSelectGirl = (e) => {
@@ -77,9 +77,9 @@ const GirlsTable = ({ girlsName, services }) => {
                 <thead>
                     <tr className='service-row'>
                         <th><p className='elso'>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</p></th>
-                        <th>{sum}</th>
-                        <th>{cash}</th>
-                        <th>{card}</th>
+                        <th>{sum.toLocaleString('hu-HU')}</th>
+                        <th>{cash.toLocaleString('hu-HU')}</th>
+                        <th>{card.toLocaleString('hu-HU')}</th>
                         {services.map((service, index) => (
                             <th key={`header-${index}`} colSpan="2">
                                 {service.name}
