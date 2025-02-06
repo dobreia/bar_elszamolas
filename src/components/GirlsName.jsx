@@ -58,8 +58,8 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
     return (
         <div className='girls-main-content'>
             <div className="girls-new-container girls-container">
-                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='services-btn service-new-button'>Új lány</button>
-                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
+                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='btn service-new-button'>Új lány</button>
+                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='btn service-search-button'>Keresés</button>
             </div>
             {isAddActive && (
                 <>
@@ -71,7 +71,7 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
                             value={newGirlName}
                             onChange={(e) => setNewGirlName(e.target.value)}
                         />
-                        <button onClick={() => handleAdd(newGirlName)} className='girls-btn'>Hozzáadás</button>
+                        <button onClick={() => handleAdd(newGirlName)} className='btn'>Hozzáadás</button>
                     </div>
                 </>
             )
@@ -105,7 +105,7 @@ const GirlsName = ({ girlsName, setGirlsName }) => {
                                 value={editedGirlName}
                                 onChange={handleEditChange}
                             />
-                            <button className="girls-btn" onClick={() => handleEditSave(girl.id)}>Mentés</button>
+                            <button className="btn" onClick={() => handleEditSave(girl.id)}>Mentés</button>
                         </>
                     ) : (
                         <>

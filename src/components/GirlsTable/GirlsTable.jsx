@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import GirlsTableRow from './GirlsTableRow';
-import '../../styles/Girls.css'
-import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
-import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../database/firebase-config';
-import updateTotalSummary from '../../database/Summary/updateTotalSummary';
+import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import addSelectedGirl from '../../database/Girls/AddSelectedGirl';
 import removeSelectedGirl from './removeSelectedGirl';
+import GirlsTableRow from './GirlsTableRow';
+import MultipleGirls from './MultipleGirls';
+import '../../styles/Girls.css'
 
 
 
@@ -106,6 +106,7 @@ const GirlsTable = ({ girlsName, services }) => {
                     ))}
                 </tbody>
             </table>
+            <MultipleGirls/>
         </div>
     );
 };

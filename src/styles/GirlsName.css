@@ -36,7 +36,7 @@
     padding: 10px 10px;
 }
 
-.girls-btn {
+.btn {
     height: 30px;
     width: 81px;
     margin-right: -8px;
@@ -45,13 +45,7 @@
     border: 1px solid #ccc;
 }
 
-.girls-btn:hover {
-    background-color: #d7d7d7;
-}
 
-.girls-btn:active {
-    background-color: #fff;
-}
 
 .girls-actions {
     display: flex;

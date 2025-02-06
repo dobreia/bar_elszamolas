@@ -106,8 +106,8 @@ const Services = ({ services, setServices }) => {
         <div className="services-main-content">
             {/* Új szolgáltatás hozzáadása */}
             <div className="services-new-container services-container">
-                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='services-btn service-new-button'>Új szolgáltatás</button>
-                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='services-btn service-search-button'>Keresés</button>
+                <button onClick={() => { setIsAddActive(prev => !prev); setIsSearchActive(false) }} className='btn service-new-button'>Új szolgáltatás</button>
+                <button onClick={() => { setIsSearchActive(prev => !prev); setIsAddActive(false) }} className='btn service-search-button'>Keresés</button>
             </div>
             {isAddActive && (
                 <>
@@ -161,8 +161,8 @@ const Services = ({ services, setServices }) => {
                             <button onClick={() => {
                                 setIsAddActive(false);
                                 setNewService({ name: '', type: '', price: '', commission: '' });
-                            }} className="services-btn">Mégse</button>
-                            <button onClick={() => handleAdd()} className="services-btn">Hozzáadás</button>
+                            }} className="btn">Mégse</button>
+                            <button onClick={() => handleAdd()} className="btn">Hozzáadás</button>
                         </div>
                     </div>
 
@@ -302,13 +302,13 @@ const Services = ({ services, setServices }) => {
                             {editIndex === index && (
                                 <div className='services-cancel-save-buttons'>
                                     <button
-                                        className="services-btn"
+                                        className="btn"
                                         onClick={handleCancelEdit}
                                     >
                                         Mégse
                                     </button>
                                     <button
-                                        className="services-btn"
+                                        className="btn"
                                         onClick={() => handleEditSave(service.id)}
                                     >
                                         Mentés

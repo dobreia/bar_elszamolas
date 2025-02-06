@@ -9,6 +9,23 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.btn {
+    height: 30px;
+    width: 81px;
+    margin-right: -8px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn:hover {
+    background-color: #d7d7d7;
+}
+
+.btn:active {
+    background-color: #fff;
+}
+
 table {
     table-layout: fixed;
     border-collapse: collapse;
@@ -95,4 +112,47 @@ td {
 .number-td:focus-within,
 .number.input:focus {
     background-color: #62b63b69;
+}
+
+.multiple-girls {
+    position: fixed;
+    background-color: #f5f5f5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 30px;
+}
+
+.multiple-girls p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.multiple-girls-items{
+    margin-left: 28px;
+}
+.multiple-girls-item input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 2px 10px;
+}
+
+.multiple-girls-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 11px;
+}
+
+.multiple-girls .btn {
+
 }

@@ -174,15 +174,7 @@
 }
 
 /* ========== BUTTON STYLES ========== */
-.services-btn {
-    height: 30px;
-    width: 81px;
-    margin-right: -8px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #ccc;
 
-}
 
 
 .services-btn:hover {
