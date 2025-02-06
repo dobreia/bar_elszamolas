@@ -18,7 +18,8 @@ const Services = ({ services, setServices }) => {
         name: '',
         type: '',
         price: '',
-        commission: ''
+        commission: '',
+        number_of_girls: ''
     });
 
     // Dropdown kibontása vagy bezárása
@@ -46,21 +47,22 @@ const Services = ({ services, setServices }) => {
 
     const handleAdd = async () => {
         // Ellenőrzés: minden mező ki van-e töltve
-        if (!newService.name || !newService.type || !newService.price || !newService.commission) {
+        if (!newService.name || !newService.type || !newService.price || !newService.commission || !newService.number_of_girls) {
             alert("Minden mezőt ki kell tölteni!");
             return;
         }
 
         try {
             // Új szolgáltatás hozzáadása Firestore-hoz
-            await addService(newService.name, newService.type, newService.price, newService.commission);
+            await addService(newService.name, newService.type, newService.price, newService.commission, newService.number_of_girls);
 
             // Mezők törlése
             setNewService({
                 name: '',
                 type: '',
                 price: '',
-                commission: ''
+                commission: '',
+                number_of_girls: ''
             });
 
             // Hozzáadó form bezárása
@@ -76,12 +78,11 @@ const Services = ({ services, setServices }) => {
     const handleEditSave = async (serviceId) => {
         try {
             // Adatok frissítése Firestore-ban
-            await EditService(serviceId, editedService.name, editedService.type, editedService.price, editedService.commission);
+            await EditService(serviceId, editedService.name, editedService.type, editedService.price, editedService.commission, editedService.number_of_girls);
 
             console.log("Szolgáltatás sikeresen frissítve az adatbázisban!");
 
             setEditIndex(null); // Kilépés a szerkesztési módból
-            setOpenTab(null); // Bezárjuk a szerkesztett tabot
         } catch (error) {
             console.error("Hiba történt a szerkesztés mentésekor:", error);
             alert("Nem sikerült a mentés!");
@@ -116,7 +117,6 @@ const Services = ({ services, setServices }) => {
                             <input
                                 id="type"
                                 type="text"
-                                placeholder='Név'
                                 value={newService.name}
                                 onChange={(e) => setNewService({ ...newService, name: e.target.value })}
                             />
@@ -126,7 +126,6 @@ const Services = ({ services, setServices }) => {
                             <input
                                 id="type"
                                 type="text"
-                                placeholder='Típus'
                                 value={newService.type}
                                 onChange={(e) => setNewService({ ...newService, type: e.target.value })}
                             />
@@ -136,7 +135,6 @@ const Services = ({ services, setServices }) => {
                             <input
                                 id="price"
                                 type="number"
-                                placeholder='Ár'
                                 value={newService.price}
                                 onChange={(e) => setNewService({ ...newService, price: e.target.value })}
                             />
@@ -146,9 +144,17 @@ const Services = ({ services, setServices }) => {
                             <input
                                 id="commission"
                                 type="number"
-                                placeholder='Jutalék'
                                 value={newService.commission}
                                 onChange={(e) => setNewService({ ...newService, commission: e.target.value })}
+                            />
+                        </p>
+                        <p className='services-add-dropdown-item'>
+                            <label htmlFor="number_of_girls">Lányok száma</label>
+                            <input
+                                id="number_of_girls"
+                                type="number"
+                                value={newService.number_of_girls}
+                                onChange={(e) => setNewService({ ...newService, number_of_girls: e.target.value })}
                             />
                         </p>
                         <div className='services-cancel-save-buttons'>
@@ -275,6 +281,20 @@ const Services = ({ services, setServices }) => {
                                     />
                                 ) : (
                                     <span>{service.commission}</span>
+                                )}
+                            </p>
+                            <p className="services-dropdown-item">
+                                <label htmlFor="number_of_girls">Lányok száma</label>
+                                {editIndex === index ? (
+                                    <input
+                                        className='services-edit-dropdown-input'
+                                        id='number_of_girls'
+                                        type="number"
+                                        value={editedService.number_of_girls || ''}
+                                        onChange={(e) => handleEditChange('number_of_girls', e.target.value)}
+                                    />
+                                ) : (
+                                    <span>{service.number_of_girls}</span>
                                 )}
                             </p>
 

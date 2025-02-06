@@ -1,7 +1,7 @@
 import { doc, setDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase-config';
 
-const addService = async (serviceName, serviceType, servicePrice, serviceCommission) => {
+const addService = async (serviceName, serviceType, servicePrice, serviceCommission, serviceNumberOfGirls) => {
     try {
         const collectionRef = collection(db, "services");
         const snapshot = await getDocs(collectionRef);
@@ -22,7 +22,8 @@ const addService = async (serviceName, serviceType, servicePrice, serviceCommiss
             name: serviceName,
             type: serviceType,
             price: servicePrice,
-            commission: serviceCommission
+            commission: serviceCommission,
+            number_of_girls: serviceNumberOfGirls
         });
         console.log("Szolgáltatás sikeresen hozzáadva, új ID:", newId);
     } catch (error) {
