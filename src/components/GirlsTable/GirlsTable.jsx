@@ -49,7 +49,10 @@ const GirlsTable = ({ girlsName, services }) => {
 
     const handleServiceChange = (changeData) => {
         setSelectedService(changeData.service);
-        if (changeData.service.number_of_girls > 1) {
+        const changeField = changeData.changeField;
+        const hasValidValue = changeData.values.some(val => Number(val[changeField]) > 0)
+
+        if (changeData.service.number_of_girls > 1 && hasValidValue) {
             setShowMultipleGirls(true);
         }
     }
@@ -59,6 +62,7 @@ const GirlsTable = ({ girlsName, services }) => {
 
     return (
         <div className='main-content'>
+            {showMultipleGirls && <div className='overlay'></div>}
             <section className='section-girl-dropdown'>
                 <p>Válassz ki egy lányt: </p>
                 <select onChange={handleSelectGirl} value="">
@@ -118,7 +122,7 @@ const GirlsTable = ({ girlsName, services }) => {
             </table>
             {
                 showMultipleGirls && (
-                    <MultipleGirls onClose={() => setShowMultipleGirls(false)} />
+                    <MultipleGirls service={selectedService} onClose={() => setShowMultipleGirls(false)} />
                 )
             }
         </div>

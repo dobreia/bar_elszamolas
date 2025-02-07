@@ -51,7 +51,9 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
 
         onServiceChange({
             girlID,
-            service: services[index]
+            service: services[index],
+            values: values,
+            changeField: field
         })
 
         const servicePrice = services[index]?.price || 0;

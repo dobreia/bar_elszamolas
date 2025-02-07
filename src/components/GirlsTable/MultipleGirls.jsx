@@ -1,10 +1,10 @@
 import React from 'react'
 
 const MultipleGirls = ({ service, onClose }) => {
-    const girls = 3;
+    const girls = service.number_of_girls;
     return (
         <div className='multiple-girls'>
-            <p>Add meg melyik "szám" lány tartozik a szolgáltatáshoz!</p>
+            <p>Add meg melyik {girls} lány tartozik a szolgáltatáshoz!</p>
             <div className='multiple-girls-items'>
                 {
                     Array.from({ length: girls }, (_, i) => (
@@ -20,6 +20,7 @@ const MultipleGirls = ({ service, onClose }) => {
                 <button className='btn'>Mentés</button>
             </div>
         </div>
+
     )
 }
 
