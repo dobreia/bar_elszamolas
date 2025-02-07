@@ -13,7 +13,9 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
     }, [numberOfGirls]);
 
 
-    const handleInputChange = (index, value) => {
+    const handleInputChange = (index, event) => {
+        const { value } = event.target;
+
         setInputValues(prevValues => {
             const newValues = [...prevValues];
             newValues[index] = value;
@@ -47,21 +49,22 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
         <div className='multiple-girls'>
             <p>Add meg melyik {numberOfGirls} lány tartozik a szolgáltatáshoz!</p>
             <div className='multiple-girls-items'>
-                {
-                    Array.from({ length: numberOfGirls }, (_, i) => (
-                        <div key={i} className='multiple-girls-item'>
-                            <label htmlFor={`${i}girl`}>{i + 1}. lány neve:</label>
-                            <input
-                                type="text"
-                                name={`${i}girl`}
-                                id={`${i}girl`}
-                                value={inputValues[i]}
-                                onChange={(e) => handleInputChange(i, e.target.value)}
-                            />
-                            {errorMessages[i] && <p className='error-message'>{errorMessages[i]}</p>}
-                        </div>
-                    ))
-                }
+                {Array.from({ length: numberOfGirls }, (_, i) => (
+                    <div key={i} className='multiple-girls-item'>
+                        <label htmlFor={`${i}girl`}>{i + 1}. lány neve:</label>
+                        <select
+                            id={`${i}girl`}
+                            value={inputValues[i]}
+                            onChange={(e) => handleInputChange(i, e)}
+                        >
+                            <option value=""></option>
+                            {selectedGirls.map((selectedGirl, index) => (
+                                <option key={index} value={selectedGirl.name}>{selectedGirl.name}</option>
+                            ))}
+                        </select>
+                        {errorMessages[i] && <p className='error-message'>{errorMessages[i]}</p>}
+                    </div>
+                ))}
 
             </div >
             <div className='multiple-girls-btn-container'>
