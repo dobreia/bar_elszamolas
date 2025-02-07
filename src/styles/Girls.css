@@ -114,6 +114,21 @@ td {
     background-color: #62b63b69;
 }
 
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Áttetsző fekete háttér */
+    z-index: 99;
+    /* Az oldal legtetején legyen */
+    pointer-events: auto;
+    /* Tiltja a kattintásokat, így a modalon kívül semmi nem lesz kattintható */
+}
+
 .multiple-girls {
     position: fixed;
     background-color: #f5f5f5;
@@ -154,4 +169,8 @@ td {
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 11px;
+}
+
+.multiple-girls-btn-container .btn {
+    cursor: pointer;
 }
