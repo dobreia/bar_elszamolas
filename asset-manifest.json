@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/bar_elszamolas/static/css/main.a279b210.css",
-    "main.js": "/bar_elszamolas/static/js/main.c2e15bab.js",
+    "main.css": "/bar_elszamolas/static/css/main.1a7be78b.css",
+    "main.js": "/bar_elszamolas/static/js/main.72d62b9e.js",
     "static/js/453.9745858f.chunk.js": "/bar_elszamolas/static/js/453.9745858f.chunk.js",
     "index.html": "/bar_elszamolas/index.html",
     "static/media/x-icon.svg": "/bar_elszamolas/static/media/x-icon.a906c958364b1a5685f5488f1522dd77.svg",
-    "main.a279b210.css.map": "/bar_elszamolas/static/css/main.a279b210.css.map",
-    "main.c2e15bab.js.map": "/bar_elszamolas/static/js/main.c2e15bab.js.map",
+    "main.1a7be78b.css.map": "/bar_elszamolas/static/css/main.1a7be78b.css.map",
+    "main.72d62b9e.js.map": "/bar_elszamolas/static/js/main.72d62b9e.js.map",
     "453.9745858f.chunk.js.map": "/bar_elszamolas/static/js/453.9745858f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a279b210.css",
-    "static/js/main.c2e15bab.js"
+    "static/css/main.1a7be78b.css",
+    "static/js/main.72d62b9e.js"
   ]
 }
