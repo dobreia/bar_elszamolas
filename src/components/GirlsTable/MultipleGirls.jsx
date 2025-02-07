@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
     const numberOfGirls = service.number_of_girls;
-    const [errorMessages, setErrorMessages] = useState(Array(numberOfGirls).fill(""));
-    const [inputValues, setInputValues] = useState(Array(numberOfGirls).fill(""));
+    const [errorMessages, setErrorMessages] = useState(Array(numberOfGirls - 1).fill(""));
+    const [inputValues, setInputValues] = useState(Array(numberOfGirls - 1).fill(""));
     const [hasErrors, setHasErrors] = useState(false);
 
     useEffect(() => {
-        setInputValues(Array(numberOfGirls).fill(""));
-        setErrorMessages(Array(numberOfGirls).fill(""));
+        setInputValues(Array(numberOfGirls - 1).fill(""));
+        setErrorMessages(Array(numberOfGirls - 1).fill(""));
         setHasErrors(false);
     }, [numberOfGirls]);
 
@@ -40,8 +40,8 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
             setHasErrors(true);
             return;
         }
-
-        onSave(inputValues);
+        const selectedGirlsList = [girl.name, ...inputValues];
+        onSave(selectedGirlsList);
         onClose();
     };
 
@@ -54,9 +54,9 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
                 </div>
                 {Array.from({ length: numberOfGirls - 1 }, (_, i) => (
                     <div key={i} className='multiple-girls-item'>
-                        <label htmlFor={`${i + 1}girl`}>{i + 2}. lány neve:</label>
+                        <label htmlFor={`${i + 2}girl`}>{i + 2}. lány neve:</label>
                         <select
-                            id={`${i + 1}girl`}
+                            id={`${i + 2}girl`}
                             value={inputValues[i]}
                             onChange={(e) => handleInputChange(i, e)}
                         >
