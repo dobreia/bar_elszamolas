@@ -52,7 +52,10 @@ const GirlsTable = ({ girlsName, services }) => {
 
         if (changeGirl && changeData.service.number_of_girls > 1) {
             const changeField = changeData.changeField;
-            const hasValidValue = changeData.values.some(val => Number(val[changeField]) > 0)
+            const hasValidValue = changeData.values.some(val => {
+                const num = Number(val[changeField]);
+                return !isNaN(num) && num > 0;
+            });
             if (hasValidValue) {
                 setselectedGirlForModal(changeGirl);
                 setShowMultipleGirls(true);
