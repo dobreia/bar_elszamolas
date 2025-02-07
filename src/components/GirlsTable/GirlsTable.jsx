@@ -10,12 +10,11 @@ import '../../styles/Girls.css'
 
 
 const GirlsTable = ({ girlsName, services }) => {
-    console.log("girlsName prop:", girlsName);
-
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
     const [selectedGirls, setSelectedGirls] = useState([]); // Állapot a kiválasztott lányokhoz
     const [selectedService, setSelectedService] = useState(null);
+    const [selectedGirlForModal, setselectedGirlForModal] = useState(null);
     const [showMultipleGirls, setShowMultipleGirls] = useState(false);
 
     useEffect(() => {
@@ -49,13 +48,22 @@ const GirlsTable = ({ girlsName, services }) => {
 
     const handleServiceChange = (changeData) => {
         setSelectedService(changeData.service);
-        const changeField = changeData.changeField;
-        const hasValidValue = changeData.values.some(val => Number(val[changeField]) > 0)
+        const changeGirl = selectedGirls.find(girl => girl.id === changeData.girlID);
 
-        if (changeData.service.number_of_girls > 1 && hasValidValue) {
-            setShowMultipleGirls(true);
+        if (changeGirl && changeData.service.number_of_girls > 1) {
+            const changeField = changeData.changeField;
+            const hasValidValue = changeData.values.some(val => Number(val[changeField]) > 0)
+            if (hasValidValue) {
+                setselectedGirlForModal(changeGirl);
+                setShowMultipleGirls(true);
+            }
         }
     }
+
+    const handleMultipleGirls = (girls) => {
+        console.log("Kiválasztott lányok:", girls);
+    };
+
 
 
     const sum = card + cash;
@@ -122,7 +130,13 @@ const GirlsTable = ({ girlsName, services }) => {
             </table>
             {
                 showMultipleGirls && (
-                    <MultipleGirls service={selectedService} onClose={() => setShowMultipleGirls(false)} />
+                    <MultipleGirls
+                        service={selectedService}
+                        girl={selectedGirlForModal}
+                        selectedGirls={selectedGirls}
+                        onClose={() => setShowMultipleGirls(false)}
+                        onSave={handleMultipleGirls}
+                    />
                 )
             }
         </div>

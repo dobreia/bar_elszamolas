@@ -174,3 +174,11 @@ td {
 .multiple-girls-btn-container .btn {
     cursor: pointer;
 }
+
+.multiple-girls-item .error-message {
+    width: 268px;
+    text-align: end;
+    font-size: 16px;
+    margin: 0 0 5px 0;
+    color: red;
+}
