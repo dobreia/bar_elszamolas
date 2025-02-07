@@ -15,6 +15,8 @@ const GirlsTable = ({ girlsName, services }) => {
     const [cash, setCash] = useState(0);
     const [card, setCard] = useState(0);
     const [selectedGirls, setSelectedGirls] = useState([]); // Állapot a kiválasztott lányokhoz
+    const [selectedService, setSelectedService] = useState(null);
+    const [showMultipleGirls, setShowMultipleGirls] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'selectedGirls'), (snapshot) => {
@@ -44,6 +46,13 @@ const GirlsTable = ({ girlsName, services }) => {
             addSelectedGirl(selectedGirl)
         }
     };
+
+    const handleServiceChange = (changeData) => {
+        setSelectedService(changeData.service);
+        if (changeData.service.number_of_girls > 1) {
+            setShowMultipleGirls(true);
+        }
+    }
 
 
     const sum = card + cash;
@@ -102,11 +111,16 @@ const GirlsTable = ({ girlsName, services }) => {
                             card={card} setCard={setCard}
                             services={services}
                             onRemove={() => removeSelectedGirl(selectedGirl, services)}
+                            onServiceChange={handleServiceChange}
                         />
                     ))}
                 </tbody>
             </table>
-            <MultipleGirls/>
+            {
+                showMultipleGirls && (
+                    <MultipleGirls onClose={() => setShowMultipleGirls(false)} />
+                )
+            }
         </div>
     );
 };

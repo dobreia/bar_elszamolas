@@ -123,8 +123,9 @@ td {
     height: auto;
     width: auto;
     border-radius: 10px;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
     padding: 10px 30px;
+    z-index: 100;
 }
 
 .multiple-girls p {
@@ -132,9 +133,11 @@ td {
     text-align: center;
     margin-bottom: 30px;
 }
-.multiple-girls-items{
+
+.multiple-girls-items {
     margin-left: 28px;
 }
+
 .multiple-girls-item input {
     padding: 5px;
     border: 1px solid #ccc;
@@ -151,8 +154,4 @@ td {
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 11px;
-}
-
-.multiple-girls .btn {
-
 }

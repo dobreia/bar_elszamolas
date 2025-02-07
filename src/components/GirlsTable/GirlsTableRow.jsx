@@ -5,8 +5,9 @@ import updateTransaction from '../../database/Transactions/updateTransaction';
 import xIcon from '../../assets/x-icon.svg';
 import updateTotalSummary from '../../database/Summary/updateTotalSummary';
 import updateCommissionSummary from '../../database/Summary/updateCommissionSummary';
+import MultipleGirls from './MultipleGirls';
 
-const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services }) => {
+const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemove, services, onServiceChange }) => {
     const [values, setValues] = useState([]);
     const [commissionCash, setCommissionCash] = useState(0);
     const [commissionCard, setCommissionCard] = useState(0);
@@ -47,6 +48,11 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
 
         updatedValues[index][field] = numericValue;
         setValues(updatedValues);
+
+        onServiceChange({
+            girlID,
+            service: services[index]
+        })
 
         const servicePrice = services[index]?.price || 0;
         const serviceCommission = services[index]?.commission || 0;
@@ -106,6 +112,7 @@ const GirlsTableRow = ({ girlID, girlsName, cash, setCash, card, setCard, onRemo
                     </td>
                 </React.Fragment>
             ))}
+
         </tr>
     );
 };
