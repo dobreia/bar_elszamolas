@@ -1,7 +1,7 @@
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-const updateTotalSummary = async (services) => {
+const updateTotalSummary = async (service) => {
     try {
         const transactionRef = collection(db, "transactions");
         const snapshot = await getDocs(transactionRef);
@@ -12,9 +12,7 @@ const updateTotalSummary = async (services) => {
 
         snapshot.docs.forEach(doc => {
             const data = doc.data();
-            const service = services.find(service => service.id === data.serviceID);
-
-            if (service) {
+            if (service.id === data.serviceID) {
                 totalCash += (data.cash || 0) * service.price;
                 totalCard += (data.card || 0) * service.price;
             }
@@ -29,7 +27,6 @@ const updateTotalSummary = async (services) => {
             total_sum: totalSum
         }, { merge: true });
 
-        console.log(`Összeg frissítve - Cash: ${totalCash}, Card: ${totalCard}, Sum: ${totalSum}`);
     } catch (error) {
         console.error("Hiba az összegzés frissítésénél:", error);
     }

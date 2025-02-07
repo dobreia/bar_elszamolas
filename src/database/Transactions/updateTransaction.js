@@ -11,7 +11,6 @@ const updateTransactions = async (girlID, serviceID, field, value) => {
             [field]: value
         }, { merge: true });
 
-        console.log(`Adat frissítve: ${girlID} - ${serviceID} (${field}: ${value})`);
     } catch (error) {
         console.error("Hiba az adatok frissítésekor", error);
     }

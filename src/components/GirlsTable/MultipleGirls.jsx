@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import updateCommissionSummary from '../../database/Summary/updateCommissionSummary';
+import { collection, getDocs } from 'firebase/firestore';
+import updateTransactions from '../../database/Transactions/updateTransaction';
+import updateTotalSummary from '../../database/Summary/updateTotalSummary';
+import { db } from '../../database/firebase-config';
 
 const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
     const numberOfGirls = service.number_of_girls;
@@ -32,7 +37,7 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
         });
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         const newErrorMessages = inputValues.map(value => value.trim() === "" ? "A mező nem lehet üres" : "");
         setErrorMessages(newErrorMessages);
 
@@ -40,9 +45,54 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
             setHasErrors(true);
             return;
         }
+
         const selectedGirlsList = [girl.name, ...inputValues];
-        onSave(selectedGirlsList);
-        onClose();
+
+        try {
+            // Az első lány tranzakcióinak lekérése
+            const firstGirl = selectedGirls.find(g => g.name === girl.name);
+            if (!firstGirl) {
+                console.warn("Az első kiválasztott lány nem található az adatbázisban.");
+                return;
+            }
+
+            const transactionsRef = collection(db, "transactions");
+            const snapshot = await getDocs(transactionsRef);
+
+            // Az első lány aktuális tranzakcióinak kinyerése
+            const firstGirlTransactions = snapshot.docs
+                .map(doc => ({ id: doc.id, ...doc.data() }))
+                .filter(t => t.girlID === firstGirl.id && t.serviceID === service.id);
+
+            if (firstGirlTransactions.length === 0) {
+                console.warn("Az első lánynak nincs tranzakciója.");
+                return;
+            }
+
+
+            // Minden kiválasztott lánynak frissítjük a tranzakcióit az első lány alapján
+            await Promise.all(selectedGirlsList.map(async (selectedGirlName) => {
+                const foundGirl = selectedGirls.find(g => g.name === selectedGirlName);
+                if (!foundGirl) {
+                    console.warn(`Nincs ilyen lány az adatbázisban: ${selectedGirlName}`);
+                    return;
+                }
+
+
+                // Minden egyes tranzakciót lemásolunk és frissítünk az új lánynak
+                await Promise.all(firstGirlTransactions.map(async (transaction) => {
+                    await updateTransactions(foundGirl.id, service.id, 'cash', transaction.cash || 0);
+                    await updateTransactions(foundGirl.id, service.id, 'card', transaction.card || 0);
+                }));
+
+                // Jutalék és összesítés frissítése
+                await updateCommissionSummary(foundGirl.id, service);
+            }));
+            onSave(selectedGirlsList);
+            onClose();
+        } catch (error) {
+            console.error("Hiba a mentés során:", error);
+        }
     };
 
     return (
