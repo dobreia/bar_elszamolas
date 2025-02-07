@@ -121,7 +121,7 @@ td {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Áttetsző fekete háttér */
     z-index: 99;
     /* Az oldal legtetején legyen */
@@ -143,7 +143,7 @@ td {
     z-index: 100;
 }
 
-.multiple-girls p {
+.multiple-girls .header {
     font-size: 20px;
     text-align: center;
     margin-bottom: 30px;
@@ -152,6 +152,15 @@ td {
 .multiple-girls-items {
     margin-left: 28px;
 }
+
+.first-girl {
+    margin: 6.5px 0;
+}
+
+.first-girl span{
+    margin-left: 10px;
+}
+
 
 .multiple-girls-item select {
     padding: 5px;

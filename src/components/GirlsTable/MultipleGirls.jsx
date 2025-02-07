@@ -47,13 +47,16 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
 
     return (
         <div className='multiple-girls'>
-            <p>Add meg melyik {numberOfGirls} lány tartozik a szolgáltatáshoz!</p>
+            <p className='header'>Add meg melyik {numberOfGirls} lány tartozik a szolgáltatáshoz!</p>
             <div className='multiple-girls-items'>
-                {Array.from({ length: numberOfGirls }, (_, i) => (
+                <div className='multiple-girls-item'>
+                    <p className='first-girl'>1. lány neve:<span>{girl.name}</span></p>
+                </div>
+                {Array.from({ length: numberOfGirls - 1 }, (_, i) => (
                     <div key={i} className='multiple-girls-item'>
-                        <label htmlFor={`${i}girl`}>{i + 1}. lány neve:</label>
+                        <label htmlFor={`${i + 1}girl`}>{i + 2}. lány neve:</label>
                         <select
-                            id={`${i}girl`}
+                            id={`${i + 1}girl`}
                             value={inputValues[i]}
                             onChange={(e) => handleInputChange(i, e)}
                         >
@@ -71,7 +74,7 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
                 <button className='btn' onClick={onClose}>Mégse</button>
                 <button className='btn' onClick={handleSave}>Mentés</button>
             </div>
-        </div>
+        </div >
 
     )
 }
