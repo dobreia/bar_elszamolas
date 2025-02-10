@@ -28,8 +28,10 @@
 [ ] zárás gombnál kiexportálni az aznapi adaokat, aztán lenullázni az oldalt. Lehessen majd betölteni az adatot vagy excelbe vagy egy új oldalra.
 
 # Új
-ha több lányos csomag van, a lányok jutalékát megfelelően kezelni, az összhöz ne adja hozzá többször. Ajánlja fel, hogy ki a többi lány.
+[x]ha több lányos csomag van, a lányok jutalékát megfelelően kezelni, az összhöz ne adja hozzá többször. Ajánlja fel, hogy ki a többi lány.
+    [ ] ne lehessen több lányt kiválasztani
+    
 
-legyen egy teszt adatbázis
+[ ]legyen egy teszt adatbázis
 
-szerveroldalról levédeni az űrlapokat
+[ ]szerveroldalról levédeni az űrlapokat
