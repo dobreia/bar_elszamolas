@@ -23,7 +23,7 @@
 [ ] a user csak kitölti a táblázatot és mentjük az adatokat
 
 # záró fül
-[ ] létezik
+[x] létezik
 [ ] felső táblázat kitöltése más komponens adataiból
 [ ] zárás gombnál kiexportálni az aznapi adaokat, aztán lenullázni az oldalt. Lehessen majd betölteni az adatot vagy excelbe vagy egy új oldalra.
 

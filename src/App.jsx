@@ -7,7 +7,7 @@ import GirlsTable from './components/GirlsTable/GirlsTable';
 import GirlsName from './components/GirlsName';
 import Services from './components/Services';
 import BarCounter from './components/BarCounter/BarCounter';
-
+import Closing from './components/ClosingTable/Closing';
 
 function App() {
   // Központi állapot az adatokhoz
@@ -45,6 +45,7 @@ function App() {
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
           <Route path='/services' element={<Services services={services} setServices={setServices} />} />
           <Route path='/barCounter' element={<BarCounter />} />
+          <Route path='/closing' element={<Closing />} />
 
         </Routes>
       </Router>

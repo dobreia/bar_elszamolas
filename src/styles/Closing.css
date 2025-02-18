@@ -1,0 +1,107 @@
+.closing-main-content {
+    display: block;
+    margin-top: 100px;
+}
+
+.closing-main-content h1 {
+    width: 790px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.closing-table,
+.result-table,
+.footer {
+    width: 800px;
+    border-radius: 5px;
+    overflow: hidden;
+    /* Hogy a belső elemek is igazodjanak */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -50px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.result-table {
+    width: 760px;
+    background-color: white;
+    padding: 20px 20px 0 20px;
+}
+
+.result-table p {
+    margin-top: 0;
+    background-color: rgb(127, 219, 255);
+    padding: 16px;
+    border-radius: 5px;
+}
+
+.footer {
+    display: flex;
+    box-shadow: none;
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
+
+.footer button {
+    color: white;
+    font-size: 22px;
+    width: 130px;
+    height: 54px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #731328;
+}
+
+
+.closing-table tbody tr:hover {
+    background-color: #eeeeee80;
+}
+
+.closing-table th,
+.closing-table td {
+    border-left: none;
+    border-right: none;
+    border-top: #ccc solid 1px;
+    border-bottom: #ccc solid 1px;
+    width: 150px;
+}
+
+.closing-table th {
+    border: none;
+}
+
+.closing-table th {
+    background-color: #333333;
+    color: white;
+}
+
+.closing-table .first-column {
+    text-align: start;
+}
+
+.bold,
+.bold-first {
+    font-weight: 700;
+}
+
+
+.bold-first {
+    border-top: 2px solid black
+}
+
+.number-of-guests {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.number-of-guests input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 20px;
+    padding: 3px 8px;
+}

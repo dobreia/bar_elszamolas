@@ -10,6 +10,7 @@ const Navbar = () => {
             <NavLink className='nav-item' to="/girlsName">Lányok nevei</NavLink>
             <NavLink className='nav-item' to="/services">Szolgáltatások</NavLink>
             <NavLink className='nav-item' to="/barCounter">Pult</NavLink>
+            <NavLink className='nav-item' to="/closing">Záró</NavLink>
 
         </div>
     )
