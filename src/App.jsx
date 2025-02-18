@@ -13,6 +13,8 @@ function App() {
   // Központi állapot az adatokhoz
   const [girlsName, setGirlsName] = useState([]);
   const [services, setServices] = useState([]);
+  const [counterValues, setCounterValues] = useState({});
+
 
 
   useEffect(() => {
@@ -36,6 +38,7 @@ function App() {
   }, []);
 
 
+
   return (
     <div>
       <Router basename="/bar_elszamolas">
@@ -44,8 +47,8 @@ function App() {
           <Route path="/" element={<GirlsTable girlsName={girlsName} services={services} />} />
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
           <Route path='/services' element={<Services services={services} setServices={setServices} />} />
-          <Route path='/barCounter' element={<BarCounter />} />
-          <Route path='/closing' element={<Closing />} />
+          <Route path='/barCounter' element={<BarCounter counterValues={counterValues} setCounterValues={setCounterValues} />} />
+          <Route path='/closing' element={<Closing counterValues={counterValues} />} />
 
         </Routes>
       </Router>

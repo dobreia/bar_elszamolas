@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CounterBox = ({ title, idPrefix, specificFields, commonFields }) => {
+const CounterBox = ({ title, idPrefix, specificFields, commonFields, values, onChange }) => {
     const fields = [...specificFields[idPrefix], ...commonFields];
 
     return (
@@ -10,7 +10,12 @@ const CounterBox = ({ title, idPrefix, specificFields, commonFields }) => {
                 {fields.map((field) => (
                     <div key={field.id} className='counter-box-item'>
                         <label htmlFor={`${idPrefix}-${field.id}`}>{field.label}</label>
-                        <input id={`${idPrefix}-${field.id}`} type="number" />
+                        <input
+                            id={`${idPrefix}-${field.id}`}
+                            type="number"
+                            value={values[`${idPrefix}-${field.id}`] || ''}
+                            onChange={(e) => onChange(`${idPrefix}-${field.id}`, e.target.value)}
+                        />
                     </div>
                 ))}
             </div>

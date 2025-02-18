@@ -5,10 +5,10 @@ import Expense from './Expense';
 import Summary from './Summary';
 import Result from './Result';
 
-const Closing = () => {
+const Closing = ({ counterValues }) => {
     return (
         <div className='closing-main-content'>
-            <Income />
+            <Income counterValues={counterValues} />
             <Expense />
             <Summary />
             <Result />

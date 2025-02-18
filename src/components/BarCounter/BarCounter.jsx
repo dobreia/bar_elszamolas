@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/BarCounter.css'
 import CounterBox from './CounterBox';
 
@@ -26,11 +26,33 @@ const specificFields = {
     ]
 };
 
-const BarCounter = () => {
+const BarCounter = ({ counterValues, setCounterValues }) => {
+
+
+    const handleInputChange = (key, value) => {
+        setCounterValues(prevValues => ({
+            ...prevValues, [key]: value
+        }))
+    }
+
     return (
         <div className='counter-container'>
-            <CounterBox title="Lenti pult" idPrefix="lower" commonFields={commonFields} specificFields={specificFields} />
-            <CounterBox title="Fenti pult" idPrefix="upper" commonFields={commonFields} specificFields={specificFields} />
+            <CounterBox
+                title="Lenti pult"
+                idPrefix="lower"
+                commonFields={commonFields}
+                specificFields={specificFields}
+                values={counterValues}
+                onChange={handleInputChange}
+            />
+            <CounterBox
+                title="Fenti pult"
+                idPrefix="upper"
+                commonFields={commonFields}
+                specificFields={specificFields}
+                values={counterValues}
+                onChange={handleInputChange}
+            />
         </div>
     )
 }
