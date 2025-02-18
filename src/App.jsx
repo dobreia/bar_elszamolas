@@ -48,7 +48,7 @@ function App() {
           <Route path='/girlsName' element={<GirlsName girlsName={girlsName} setGirlsName={setGirlsName} />} />
           <Route path='/services' element={<Services services={services} setServices={setServices} />} />
           <Route path='/barCounter' element={<BarCounter counterValues={counterValues} setCounterValues={setCounterValues} />} />
-          <Route path='/closing' element={<Closing counterValues={counterValues} />} />
+          <Route path='/closing' element={<Closing counterValues={counterValues} services={services} />} />
 
         </Routes>
       </Router>

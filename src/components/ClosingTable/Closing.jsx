@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../database/firebase-config';
 import '../../styles/Closing.css';
 import Income from './Income';
 import Expense from './Expense';
 import Summary from './Summary';
 import Result from './Result';
 
-const Closing = ({ counterValues }) => {
+const Closing = ({ counterValues, services }) => {
+    const [transactions, setTransactions] = useState([]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, 'transactions'), (snapshot) => {
+            setTransactions(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        });
+
+        return () => unsubscribe();
+    }, []);
     return (
         <div className='closing-main-content'>
-            <Income counterValues={counterValues} />
+            <Income counterValues={counterValues} transactions={transactions} services={services} />
             <Expense />
             <Summary />
             <Result />
