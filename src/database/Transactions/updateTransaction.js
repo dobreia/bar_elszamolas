@@ -8,7 +8,8 @@ const updateTransactions = async (girlID, serviceID, field, value) => {
         await setDoc(transactionRef, {
             girlID,
             serviceID,
-            [field]: value
+            [field]: value,
+            lastModified: field  // 🔹 Beállítjuk, hogy ez a mező változott utoljára
         }, { merge: true });
 
     } catch (error) {
@@ -16,4 +17,4 @@ const updateTransactions = async (girlID, serviceID, field, value) => {
     }
 };
 
-export default updateTransactions
+export default updateTransactions;

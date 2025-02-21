@@ -69,7 +69,6 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
                 return;
             }
 
-
             // Minden kiválasztott lánynak frissítjük a tranzakcióit az első lány alapján
             await Promise.all(selectedGirlsList.map(async (selectedGirlName) => {
                 const foundGirl = selectedGirls.find(g => g.name === selectedGirlName);
@@ -78,22 +77,28 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
                     return;
                 }
 
-
                 // Minden egyes tranzakciót lemásolunk és frissítünk az új lánynak
                 await Promise.all(firstGirlTransactions.map(async (transaction) => {
-                    await updateTransactions(foundGirl.id, service.id, 'cash', transaction.cash || 0);
-                    await updateTransactions(foundGirl.id, service.id, 'card', transaction.card || 0);
+                    // Ellenőrizzük, hogy melyik érték változott utoljára
+                    if (transaction.lastModified === 'cash') {
+                        await updateTransactions(foundGirl.id, service.id, 'cash', transaction.cash);
+                    } else if (transaction.lastModified === 'card') {
+                        await updateTransactions(foundGirl.id, service.id, 'card', transaction.card);
+                    }
                 }));
 
                 // Jutalék és összesítés frissítése
                 await updateCommissionSummary(foundGirl.id, service);
             }));
+
             onSave(selectedGirlsList);
             onClose();
         } catch (error) {
             console.error("Hiba a mentés során:", error);
         }
     };
+
+
 
     return (
         <div className='multiple-girls'>
