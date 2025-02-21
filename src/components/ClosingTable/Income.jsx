@@ -30,6 +30,10 @@ const Income = ({ counterValues, services }) => {
 
     // Táncos tranzakciók összesítése
     const danceTransactions = getTransactionsByType("tánc");
+    const drinkTransactions = getTransactionsByType("lány italok");
+    const champagneTransactions = getTransactionsByType("pezsgő");
+    const packageTransactions = getTransactionsByType("csomag");
+
 
     const danceCard = danceTransactions.reduce((acc, trx) => {
         const service = services.find(s => s.id === trx.serviceID);
@@ -43,17 +47,42 @@ const Income = ({ counterValues, services }) => {
 
     const danceTotal = danceCard + danceCash;
 
-    const drinkCard = 0;
-    const drinkCash = 0;
-    const drinkTotal = 0;
+    const drinkCard = drinkTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.card) || 0) * (service?.price || 0));
+    }, 0);
 
-    const champagneCard = 0;
-    const champagneCash = 0;
-    const champagneTotal = 0;
+    const drinkCash = drinkTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.cash) || 0) * (service?.price || 0));
+    }, 0);
+    const drinkTotal = drinkCard + drinkCash;
 
-    const packageCard = 0;
-    const packageCash = 0;
-    const packageTotal = 0;
+    const champagneCard = champagneTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.card) || 0) * (service?.price || 0));
+    }, 0);
+
+    const champagneCash = champagneTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.cash) || 0) * (service?.price || 0));
+    }, 0);
+    const champagneTotal = champagneCard + champagneCash;
+
+    const packageCard = packageTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.card) || 0) * (service?.price || 0));
+    }, 0);
+
+    const packageCash = packageTransactions.reduce((acc, trx) => {
+        const service = services.find(s => s.id === trx.serviceID);
+        return acc + ((parseFloat(trx.cash) || 0) * (service?.price || 0));
+    }, 0);
+    const packageTotal = packageCard + packageCash;
+
+    const servicesCardTotal = danceCard + drinkCard + champagneCard + packageCard;
+    const servicesCashTotal = danceCash + drinkCash + champagneCash + packageCash;
+
 
     const lowerBarCard = ((Number(counterValues["lower-POS-LowerBar"]) || 0) + (Number(counterValues["lower-POS-LowerArea"]) || 0));
     const lowerBarCash = ((Number(counterValues["lower-ForeignCurrencyCash"]) || 0) + (Number(counterValues["lower-Cash"]) || 0));
@@ -82,31 +111,31 @@ const Income = ({ counterValues, services }) => {
                         <td className='first-column'>Tánc</td>
                         <td>{danceCard} Ft</td>
                         <td>{danceCash} Ft</td>
-                        <td></td>
+                        <td>{danceTotal} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Lány italok</td>
-                        <td>0 Ft</td>
-                        <td>0 Ft</td>
-                        <td></td>
+                        <td>{drinkCard} Ft</td>
+                        <td>{drinkCash} Ft</td>
+                        <td>{drinkTotal} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Pezsgő</td>
-                        <td>0 Ft</td>
-                        <td>0 Ft</td>
-                        <td></td>
+                        <td>{champagneCard} Ft</td>
+                        <td>{champagneCash} Ft</td>
+                        <td>{champagneTotal} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Csomag</td>
-                        <td>0 Ft</td>
-                        <td>0 Ft</td>
-                        <td></td>
+                        <td>{packageCard} Ft</td>
+                        <td>{packageCash} Ft</td>
+                        <td>{packageTotal} Ft</td>
                     </tr>
                     <tr className='yellow'>
                         <td className='first-column'>Minden tánc program (tánc + ital)</td>
-                        <td>0 Ft</td>
-                        <td>0 Ft</td>
-                        <td>0 Ft</td>
+                        <td>{servicesCardTotal} Ft</td>
+                        <td>{servicesCashTotal} Ft</td>
+                        <td>{servicesCardTotal + servicesCashTotal}</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Pult LENT</td>
