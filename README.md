@@ -31,7 +31,15 @@
 [x]ha több lányos csomag van, a lányok jutalékát megfelelően kezelni, az összhöz ne adja hozzá többször. Ajánlja fel, hogy ki a többi lány.
     [ ] ne lehessen több lányt kiválasztani
     
+# FONTOS
+[ ]legyen egy teszt adatbázis 
 
-[ ]legyen egy teszt adatbázis
 
-[ ]szerveroldalról levédeni az űrlapokat
+# ÚJ
+[ ] Külön cash és card jutalék
+[ ] szám formátum mindenhol
+[ ] főoldalon dátum megjelenítése 
+[ ] törlésre kérdezzen rá 
+[ ] új szolgáltatás létrehozásánál a típust legrödülőben
+[ ] fixálni a lányok neveit és a szolgáltatásokat görgetésnél
+[ ] szerveroldalról levédeni az űrlapokat
