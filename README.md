@@ -43,3 +43,4 @@
 [ ] új szolgáltatás létrehozásánál a típust legrödülőben
 [ ] fixálni a lányok neveit és a szolgáltatásokat görgetésnél
 [ ] szerveroldalról levédeni az űrlapokat
+[ ] lányokat törlés helyett inaktív legyen, és ilyenkor ne lehessen kiválasztani a főoldalon csak ha visszaaktiváltuk 
