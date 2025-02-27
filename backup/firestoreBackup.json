@@ -1,0 +1,839 @@
+{
+  "transactions": [
+    {
+      "id": "10_02",
+      "girlID": "10",
+      "serviceID": "02",
+      "cash": 0
+    },
+    {
+      "id": "18_03",
+      "girlID": "18",
+      "serviceID": "03",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "18_04",
+      "girlID": "18",
+      "serviceID": "04",
+      "cash": 0,
+      "lastModified": "card",
+      "card": 0
+    },
+    {
+      "id": "18_06",
+      "girlID": "18",
+      "lastModified": "cash",
+      "serviceID": "06",
+      "cash": 0
+    },
+    {
+      "id": "18_10",
+      "girlID": "18",
+      "serviceID": "10",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "18_15",
+      "girlID": "18",
+      "lastModified": "cash",
+      "serviceID": "15",
+      "cash": 0
+    },
+    {
+      "id": "18_22",
+      "girlID": "18",
+      "serviceID": "22",
+      "previousCard": 0,
+      "previousCash": 1,
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "18_23",
+      "girlID": "18",
+      "serviceID": "23",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "18_25",
+      "girlID": "18",
+      "serviceID": "25",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "18_26",
+      "girlID": "18",
+      "lastModified": "cash",
+      "serviceID": "26",
+      "cash": 0
+    },
+    {
+      "id": "18_31",
+      "girlID": "18",
+      "lastModified": "cash",
+      "serviceID": "31",
+      "cash": 0
+    },
+    {
+      "id": "19_03",
+      "girlID": "19",
+      "serviceID": "03",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "19_05",
+      "girlID": "19",
+      "serviceID": "05",
+      "cash": 0
+    },
+    {
+      "id": "19_08",
+      "girlID": "19",
+      "lastModified": "cash",
+      "serviceID": "08",
+      "cash": 0
+    },
+    {
+      "id": "19_12",
+      "girlID": "19",
+      "serviceID": "12",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "19_14",
+      "girlID": "19",
+      "serviceID": "14",
+      "cash": 0
+    },
+    {
+      "id": "19_19",
+      "girlID": "19",
+      "serviceID": "19",
+      "cash": 0
+    },
+    {
+      "id": "19_21",
+      "girlID": "19",
+      "lastModified": "cash",
+      "serviceID": "21",
+      "cash": 0
+    },
+    {
+      "id": "19_22",
+      "girlID": "19",
+      "serviceID": "22",
+      "previousCash": 24,
+      "previousCard": 0,
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "19_23",
+      "girlID": "19",
+      "serviceID": "23",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "19_25",
+      "girlID": "19",
+      "serviceID": "25",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "19_26",
+      "girlID": "19",
+      "serviceID": "26",
+      "cash": 0
+    },
+    {
+      "id": "19_28",
+      "girlID": "19",
+      "serviceID": "28",
+      "cash": 0
+    },
+    {
+      "id": "20_03",
+      "girlID": "20",
+      "serviceID": "03",
+      "cash": 0
+    },
+    {
+      "id": "20_05",
+      "girlID": "20",
+      "lastModified": "card",
+      "serviceID": "05",
+      "card": 0
+    },
+    {
+      "id": "20_22",
+      "girlID": "20",
+      "serviceID": "22",
+      "cash": 0,
+      "lastModified": "card",
+      "card": 0
+    },
+    {
+      "id": "20_23",
+      "girlID": "20",
+      "serviceID": "23",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "20_25",
+      "girlID": "20",
+      "serviceID": "25",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "20_26",
+      "girlID": "20",
+      "serviceID": "26",
+      "cash": 0
+    },
+    {
+      "id": "20_31",
+      "girlID": "20",
+      "serviceID": "31",
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "20_32",
+      "girlID": "20",
+      "serviceID": "32",
+      "cash": 1
+    },
+    {
+      "id": "21_03",
+      "girlID": "21",
+      "serviceID": "03",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "21_04",
+      "girlID": "21",
+      "lastModified": "cash",
+      "serviceID": "04",
+      "cash": 0
+    },
+    {
+      "id": "21_06",
+      "girlID": "21",
+      "serviceID": "06",
+      "card": 0
+    },
+    {
+      "id": "21_22",
+      "girlID": "21",
+      "serviceID": "22",
+      "cash": 0,
+      "lastModified": "card",
+      "card": 0
+    },
+    {
+      "id": "21_23",
+      "girlID": "21",
+      "serviceID": "23",
+      "card": 0,
+      "cash": 0
+    },
+    {
+      "id": "21_24",
+      "girlID": "21",
+      "serviceID": "24",
+      "cash": 0
+    },
+    {
+      "id": "21_25",
+      "girlID": "21",
+      "serviceID": "25",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "21_26",
+      "girlID": "21",
+      "serviceID": "26",
+      "cash": 0
+    },
+    {
+      "id": "22_20",
+      "girlID": "22",
+      "serviceID": "20",
+      "card": 0
+    },
+    {
+      "id": "22_21",
+      "girlID": "22",
+      "lastModified": "cash",
+      "serviceID": "21",
+      "cash": 0
+    },
+    {
+      "id": "22_22",
+      "girlID": "22",
+      "serviceID": "22",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": -20
+    },
+    {
+      "id": "22_23",
+      "girlID": "22",
+      "serviceID": "23",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "22_25",
+      "girlID": "22",
+      "serviceID": "25",
+      "cash": 0,
+      "lastModified": "card",
+      "card": 0
+    },
+    {
+      "id": "23_22",
+      "girlID": "23",
+      "serviceID": "22",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "23_23",
+      "girlID": "23",
+      "serviceID": "23",
+      "card": 0,
+      "cash": 0
+    },
+    {
+      "id": "23_25",
+      "girlID": "23",
+      "serviceID": "25",
+      "cash": 0,
+      "lastModified": "card",
+      "card": 0
+    },
+    {
+      "id": "24_22",
+      "girlID": "24",
+      "serviceID": "22",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "24_23",
+      "girlID": "24",
+      "serviceID": "23",
+      "card": 0,
+      "cash": 0
+    },
+    {
+      "id": "24_25",
+      "girlID": "24",
+      "lastModified": "cash",
+      "serviceID": "25",
+      "cash": 0
+    },
+    {
+      "id": "25_23",
+      "girlID": "25",
+      "serviceID": "23",
+      "card": 0,
+      "cash": 0
+    },
+    {
+      "id": "26_04",
+      "girlID": "26",
+      "serviceID": "04",
+      "cash": 0
+    },
+    {
+      "id": "26_22",
+      "girlID": "26",
+      "lastModified": "cash",
+      "serviceID": "22",
+      "cash": 0
+    },
+    {
+      "id": "26_23",
+      "girlID": "26",
+      "serviceID": "23",
+      "card": 0,
+      "lastModified": "cash",
+      "cash": 0
+    },
+    {
+      "id": "26_25",
+      "girlID": "26",
+      "serviceID": "25",
+      "cash": null,
+      "card": null
+    },
+    {
+      "id": "27_23",
+      "girlID": "27",
+      "lastModified": "cash",
+      "serviceID": "23",
+      "cash": 0
+    },
+    {
+      "id": "6_22",
+      "girlID": "6",
+      "serviceID": "22",
+      "cash": 0,
+      "card": 0
+    },
+    {
+      "id": "7_23",
+      "girlID": "7",
+      "lastModified": "cash",
+      "serviceID": "23",
+      "cash": 0
+    }
+  ],
+  "girls": [
+    {
+      "id": "10",
+      "name": "(ROXI) Bordás Roxána"
+    },
+    {
+      "id": "11",
+      "name": "(SARAH) Dudu Mercédesz Kitti"
+    },
+    {
+      "id": "12",
+      "name": "(SZANDRA) Lauferné Kozák Szimonetta"
+    },
+    {
+      "id": "13",
+      "name": "(VIVIEN) Szabó Tünde"
+    },
+    {
+      "id": "14",
+      "name": "(ZARA) Farkas Zsófia"
+    },
+    {
+      "id": "15",
+      "name": "Babóth Luca"
+    },
+    {
+      "id": "16",
+      "name": "Bacsa Tifani Viktória"
+    },
+    {
+      "id": "19",
+      "name": "Bognár Olivia Boglárka"
+    },
+    {
+      "id": "2",
+      "name": "(ANDIKA) Szabó Andrea"
+    },
+    {
+      "id": "20",
+      "name": "Botos Edit Ilona"
+    },
+    {
+      "id": "21",
+      "name": "Czirfusz Vivien"
+    },
+    {
+      "id": "22",
+      "name": "Csécsei Krisztina"
+    },
+    {
+      "id": "23",
+      "name": "Csonka Kitti Klaudia"
+    },
+    {
+      "id": "24",
+      "name": "Dér Zsófia"
+    },
+    {
+      "id": "25",
+      "name": "Dobai Violetta"
+    },
+    {
+      "id": "26",
+      "name": "Erdélyi Enikő"
+    },
+    {
+      "id": "27",
+      "name": "Fenyvesi Vivien"
+    },
+    {
+      "id": "28",
+      "name": "Gáll Kitti"
+    },
+    {
+      "id": "29",
+      "name": "Gönczi Brigitta"
+    },
+    {
+      "id": "3",
+      "name": "(BETTI) Gloncziné Somogyi Beátrix"
+    },
+    {
+      "id": "30",
+      "name": "Horesta Glória Noémi"
+    },
+    {
+      "id": "31",
+      "name": "Horvath Csilla"
+    },
+    {
+      "id": "32",
+      "name": "Jusztin Mirabel"
+    },
+    {
+      "id": "33",
+      "name": "Kállai Alexandra Melitta"
+    },
+    {
+      "id": "34",
+      "name": "Kánya Bernadett"
+    },
+    {
+      "id": "35",
+      "name": "Keczán Mariann"
+    },
+    {
+      "id": "36",
+      "name": "Keve Henriett"
+    },
+    {
+      "id": "37",
+      "name": "Király Frida Ivána"
+    },
+    {
+      "id": "38",
+      "name": "Kopasz Klaudia Gerda"
+    },
+    {
+      "id": "39",
+      "name": "Kovács Anna Viktória"
+    },
+    {
+      "id": "4",
+      "name": "(BJUN) Szajkó Fanni Mária"
+    },
+    {
+      "id": "40",
+      "name": "Lajos Abigél"
+    },
+    {
+      "id": "41",
+      "name": "Lendvai Adrienn"
+    },
+    {
+      "id": "42",
+      "name": "Meluzsin Regina"
+    },
+    {
+      "id": "43",
+      "name": "Östör Vanessza Viktória"
+    },
+    {
+      "id": "44",
+      "name": "Pásztor Réka Rebeka"
+    },
+    {
+      "id": "45",
+      "name": "Radics Anasztázia"
+    },
+    {
+      "id": "46",
+      "name": "Radics Vivien Margit"
+    },
+    {
+      "id": "47",
+      "name": "Szalai Szimonetta Klaudia"
+    },
+    {
+      "id": "48",
+      "name": "Török Leila Éva"
+    },
+    {
+      "id": "49",
+      "name": "Veres Eliza"
+    },
+    {
+      "id": "5",
+      "name": "(FANNI) Béres Andrásné Horváth Katalin"
+    },
+    {
+      "id": "50",
+      "name": "Vlaszák Manda"
+    },
+    {
+      "id": "51",
+      "name": "Zólyomi Tamara"
+    },
+    {
+      "id": "52",
+      "name": "(NIKA) Vasvári Ágnes Mónika"
+    },
+    {
+      "id": "53",
+      "name": "Papp Krisztina Melinda"
+    },
+    {
+      "id": "54",
+      "name": "Pap Vivien"
+    },
+    {
+      "id": "56",
+      "name": "Új lány"
+    },
+    {
+      "id": "6",
+      "name": "(LETTI) Mátyus Renáta"
+    },
+    {
+      "id": "7",
+      "name": "(MARY) Bálint Mária"
+    },
+    {
+      "id": "8",
+      "name": "(NEFELY) Törökné Király Adrienn"
+    },
+    {
+      "id": "9",
+      "name": "(RAMÓNA) Tóth Tünde Róza"
+    }
+  ],
+  "services": [
+    {
+      "id": "03",
+      "name": "20 full",
+      "type": "tánc",
+      "price": 35000,
+      "commission": 17500,
+      "number_of_girls": 1
+    },
+    {
+      "id": "04",
+      "name": "30 full",
+      "type": "tánc",
+      "price": 45000,
+      "commission": 22500,
+      "number_of_girls": 1
+    },
+    {
+      "id": "05",
+      "name": "hell/heaven 30min",
+      "type": "tánc",
+      "price": 70000,
+      "commission": 35000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "06",
+      "name": "hell/heaven 60min",
+      "price": 100000,
+      "commission": 50000,
+      "type": "csomag",
+      "number_of_girls": 1
+    },
+    {
+      "id": "07",
+      "name": "table",
+      "type": "tánc",
+      "price": 0,
+      "commission": 7000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "08",
+      "name": "10 min stag show",
+      "type": "tánc",
+      "price": 35000,
+      "commission": 17500,
+      "number_of_girls": 1
+    },
+    {
+      "id": "09",
+      "name": "10min Stag Show",
+      "type": "tánc",
+      "price": 0,
+      "commission": 0,
+      "number_of_girls": 1
+    },
+    {
+      "id": "10",
+      "name": "Naomi Dream",
+      "type": "lány italok",
+      "price": 9000,
+      "commission": 4500,
+      "number_of_girls": 1
+    },
+    {
+      "id": "11",
+      "name": "Naomi Shot",
+      "type": "lány italok",
+      "price": 6000,
+      "commission": 3000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "12",
+      "name": "Taittinger Brut Réserve",
+      "type": "pezsgő",
+      "price": 34000,
+      "commission": 7000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "13",
+      "name": "Antech Cuvée Expression",
+      "type": "pezsgő",
+      "price": 25000,
+      "commission": 5000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "14",
+      "name": "Moét & Chandon Impérial",
+      "type": "pezsgő",
+      "price": 75000,
+      "commission": 20000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "15",
+      "name": "Veuve Clicquot Yelow Label",
+      "type": "pezsgő",
+      "price": 75000,
+      "commission": 20000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "18",
+      "name": "Dom Perignon",
+      "type": "pezsgő",
+      "price": 220000,
+      "commission": 40000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "19",
+      "name": "Hungaria 0,2",
+      "type": "pezsgő",
+      "price": 11000,
+      "commission": 5000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "20",
+      "name": "Hungaria 0,7",
+      "type": "pezsgő",
+      "price": 23000,
+      "commission": 9000,
+      "number_of_girls": 0
+    },
+    {
+      "id": "21",
+      "name": "N.Campbell",
+      "type": "csomag",
+      "price": 38000,
+      "commission": 17000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "23",
+      "name": "B.Hadid 4 lány",
+      "type": "csomag",
+      "price": 145000,
+      "commission": 14000,
+      "number_of_girls": 4
+    },
+    {
+      "id": "24",
+      "name": "K.Mosss",
+      "type": "csomag",
+      "price": 105000,
+      "commission": 35000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "25",
+      "name": "G.Bündchen 2 lány",
+      "type": "csomag",
+      "price": 145000,
+      "commission": 25000,
+      "number_of_girls": 2
+    },
+    {
+      "id": "26",
+      "name": "L.Evangelista 4 lány",
+      "type": "csomag",
+      "price": 290000,
+      "commission": 25000,
+      "number_of_girls": 4
+    },
+    {
+      "id": "27",
+      "name": "H.Klum",
+      "type": "csomag",
+      "price": 240000,
+      "commission": 55000,
+      "number_of_girls": 1
+    },
+    {
+      "id": "28",
+      "name": "C.Schiffler 2 lány",
+      "type": "csomag",
+      "price": "290000",
+      "commission": "40000",
+      "number_of_girls": 2
+    },
+    {
+      "id": "29",
+      "name": "T. Banks 4 lány",
+      "type": "csomag",
+      "price": "460000",
+      "commission": "36000",
+      "number_of_girls": 4
+    },
+    {
+      "id": "30",
+      "name": "7 perc top",
+      "type": "tánc",
+      "price": 15000,
+      "commission": 7500,
+      "number_of_girls": 1
+    },
+    {
+      "id": "31",
+      "name": "Iszap",
+      "type": "Tánc",
+      "price": "45000",
+      "commission": "25000",
+      "number_of_girls": "2"
+    }
+  ]
+}

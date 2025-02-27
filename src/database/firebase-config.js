@@ -1,17 +1,19 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAjYZ_84jw8Z5__V9zsdx5Dii3zcMeavF4",
-    authDomain: "bar-elszamolas.firebaseapp.com",
-    projectId: "bar-elszamolas",
-    storageBucket: "bar-elszamolas.firebasestorage.app",
-    messagingSenderId: "206871876831",
-    appId: "1:206871876831:web:0001253d4b40afc2cfc56a",
-    measurementId: "G-TVC07XKL4P"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+console.log(`🔥 Firestore adatbázis: ${process.env.REACT_APP_ENV === "production" ? "ÉLES" : "TESZT"}`);
 
 export { db };
