@@ -9,6 +9,28 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.service-row {
+    position: sticky;
+    top: 40px;
+    z-index: 1000;
+    ;
+
+}
+
+.cash-card-row {
+    position: sticky;
+    top: 79.2px;
+}
+
+.service-row th {
+    background-color: #fff;
+}
+
+.cash-card-row {
+    position: sticky;
+    left: 0;
+}
+
 .btn {
     height: 30px;
     width: 81px;
@@ -26,10 +48,20 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #fff;
 }
 
-table {
-    table-layout: fixed;
-    border-collapse: collapse;
+.girls-table-container {
+    position: relative;
 }
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+
+
+}
+
+
+
 
 .section-girl-dropdown {
     margin-top: 50px;
@@ -56,7 +88,7 @@ table {
 
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 8px;
     text-align: center;
     white-space: nowrap;
@@ -190,4 +222,46 @@ td {
     font-size: 16px;
     margin: 0 0 5px 0;
     color: red;
+}
+
+/* Az első 4 oszlop fixálása */
+/* Első oszlop */
+th:nth-child(1),
+td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    width: 337.6px;
+    /* A képen látható méret */
+    z-index: 100;
+    background-color: #fff;
+}
+
+/* Második oszlop */
+th:nth-child(2),
+td:nth-child(2) {
+    position: sticky;
+    left: 337.6px;
+    /* Az előző oszlop szélessége */
+    width: 83.06px;
+    z-index: 100;
+}
+
+/* Harmadik oszlop */
+th:nth-child(3),
+td:nth-child(3) {
+    position: sticky;
+    left: 420.66px;
+    /* 337.6 + 83.06 */
+    width: 83.34px;
+    z-index: 100;
+}
+
+/* Negyedik oszlop */
+th:nth-child(4),
+td:nth-child(4) {
+    position: sticky;
+    left: 504px;
+    /* 420.66 + 83.34 */
+    width: 61.9px;
+    z-index: 100;
 }
