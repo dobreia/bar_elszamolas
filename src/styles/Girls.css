@@ -56,12 +56,7 @@ table {
     border-collapse: separate;
     border-spacing: 0;
     border: 1px solid rgba(0, 0, 0, 0.5);
-
-
 }
-
-
-
 
 .section-girl-dropdown {
     margin-top: 50px;
@@ -226,8 +221,8 @@ td {
 
 /* Az első 4 oszlop fixálása */
 /* Első oszlop */
-th:nth-child(1),
-td:nth-child(1) {
+.girls-table th:nth-child(1),
+.girls-table td:nth-child(1) {
     position: sticky;
     left: 0;
     width: 337.6px;
@@ -237,8 +232,8 @@ td:nth-child(1) {
 }
 
 /* Második oszlop */
-th:nth-child(2),
-td:nth-child(2) {
+.girls-table th:nth-child(2),
+.girls-table td:nth-child(2) {
     position: sticky;
     left: 337.6px;
     /* Az előző oszlop szélessége */
@@ -247,8 +242,8 @@ td:nth-child(2) {
 }
 
 /* Harmadik oszlop */
-th:nth-child(3),
-td:nth-child(3) {
+.girls-table th:nth-child(3),
+.girls-table td:nth-child(3) {
     position: sticky;
     left: 420.66px;
     /* 337.6 + 83.06 */
@@ -257,8 +252,8 @@ td:nth-child(3) {
 }
 
 /* Negyedik oszlop */
-th:nth-child(4),
-td:nth-child(4) {
+.girls-table th:nth-child(4),
+.girls-table td:nth-child(4) {
     position: sticky;
     left: 504px;
     /* 420.66 + 83.34 */

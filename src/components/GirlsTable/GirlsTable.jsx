@@ -90,7 +90,7 @@ const GirlsTable = ({ girlsName, services }) => {
                 </select>
             </section>
 
-            <table>
+            <table className='girls-table'>
                 <thead>
                     <tr className='service-row'>
                         <th><p className='elso'>ÖSSZ BEVÉTEL TÁNC + LÁNY ITAL</p></th>
