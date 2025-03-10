@@ -26,10 +26,16 @@ const GirlsTable = ({ girlsName, services }) => {
         const unsubscribeSummary = onSnapshot(doc(db, "totalSummary", "01"), (docSnap) => {
             if (docSnap.exists()) {
                 const data = docSnap.data();
+                console.log("📊 Firestore totalSummary adatok:", data); // Debugging log
                 setCash(data.total_cash || 0);
                 setCard(data.total_card || 0);
+            } else {
+                console.warn("⚠️ Firestore: 'totalSummary/01' dokumentum nem létezik!");
+                setCash(0);
+                setCard(0);
             }
         });
+        
 
         return () => {
             unsubscribe();

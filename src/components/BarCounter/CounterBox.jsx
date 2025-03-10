@@ -5,11 +5,11 @@ const CounterBox = ({ title, idPrefix, specificFields, commonFields, values, onC
 
     const formatNumber = (value) => {
         if (!value) return '';
-        return Number(value).toLocaleString("hu-HU"); // Magyar számformátum
+        return Number(value).toLocaleString("hu-HU");
     };
 
     const parseNumber = (value) => {
-        return value.replace(/\s+/g, ''); // Eltávolítja a szóközöket
+        return value.replace(/\s+/g, ''); 
     };
 
     return (

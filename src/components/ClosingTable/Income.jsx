@@ -82,6 +82,7 @@ const Income = ({ counterValues, services }) => {
 
     const servicesCardTotal = danceCard + drinkCard + champagneCard + packageCard;
     const servicesCashTotal = danceCash + drinkCash + champagneCash + packageCash;
+    const servicesTotal = servicesCardTotal + servicesCashTotal;
 
 
     const lowerBarCard = ((Number(counterValues["lower-POS-LowerBar"]) || 0) + (Number(counterValues["lower-POS-LowerArea"]) || 0));
@@ -109,33 +110,33 @@ const Income = ({ counterValues, services }) => {
                 <tbody>
                     <tr >
                         <td className='first-column'>Tánc</td>
-                        <td>{danceCard} Ft</td>
-                        <td>{danceCash} Ft</td>
-                        <td>{danceTotal} Ft</td>
+                        <td>{formatNumber(danceCard)} Ft</td>
+                        <td>{formatNumber(danceCash)} Ft</td>
+                        <td>{formatNumber(danceTotal)} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Lány italok</td>
-                        <td>{drinkCard} Ft</td>
-                        <td>{drinkCash} Ft</td>
-                        <td>{drinkTotal} Ft</td>
+                        <td>{formatNumber(drinkCard)} Ft</td>
+                        <td>{formatNumber(drinkCash)} Ft</td>
+                        <td>{formatNumber(drinkTotal)} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Pezsgő</td>
-                        <td>{champagneCard} Ft</td>
-                        <td>{champagneCash} Ft</td>
-                        <td>{champagneTotal} Ft</td>
+                        <td>{formatNumber(champagneCard)} Ft</td>
+                        <td>{formatNumber(champagneCash)} Ft</td>
+                        <td>{formatNumber(champagneTotal)} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Csomag</td>
-                        <td>{packageCard} Ft</td>
-                        <td>{packageCash} Ft</td>
-                        <td>{packageTotal} Ft</td>
+                        <td>{formatNumber(packageCard)} Ft</td>
+                        <td>{formatNumber(packageCash)} Ft</td>
+                        <td>{formatNumber(packageTotal)} Ft</td>
                     </tr>
                     <tr className='yellow'>
                         <td className='first-column'>Minden tánc program (tánc + ital)</td>
-                        <td>{servicesCardTotal} Ft</td>
-                        <td>{servicesCashTotal} Ft</td>
-                        <td>{servicesCardTotal + servicesCashTotal}</td>
+                        <td>{formatNumber(servicesCardTotal)} Ft</td>
+                        <td>{formatNumber(servicesCashTotal)} Ft</td>
+                        <td>{formatNumber(servicesTotal)} Ft</td>
                     </tr>
                     <tr>
                         <td className='first-column'>Pult LENT</td>
@@ -157,7 +158,7 @@ const Income = ({ counterValues, services }) => {
                     </tr>
                     <tr className='bold'>
                         <td className='first-column'>Minden bevétel</td>
-                        <td>0 Ft</td>
+                        <td>{formatNumber(lowerBarTotal + upperBarTotal + servicesTotal)} Ft</td>
                         <td></td>
                         <td></td>
                     </tr>
