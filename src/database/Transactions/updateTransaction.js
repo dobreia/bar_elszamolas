@@ -1,7 +1,7 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-const updateTransactions = async (girlID, serviceID, field, value, servicePrice) => {
+const updateTransactions = async (girlID, serviceID, field, value, servicePrice, serviceCommission) => {
     try {
         const transactionRef = doc(db, "transactions", `${girlID}_${serviceID}`);
 
@@ -9,7 +9,8 @@ const updateTransactions = async (girlID, serviceID, field, value, servicePrice)
             girlID,
             serviceID,
             [field]: value,
-            servicePrice,           // 🔹 hozzáadjuk a szolgáltatás árát
+            servicePrice,
+            serviceCommission,
             lastModified: field
         }, { merge: true });
 
