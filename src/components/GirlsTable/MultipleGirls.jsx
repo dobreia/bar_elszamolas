@@ -80,30 +80,27 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
                 // Minden egyes tranzakciót lemásolunk és frissítünk az új lánynak
                 await Promise.all(firstGirlTransactions.map(async (transaction) => {
                     const isMainGirl = index === 0;
-                    // Ellenőrizzük, hogy melyik érték változott utoljára
-                    if (transaction.lastModified === 'cash') {
-                        await updateTransactions(
-                            foundGirl.id,
-                            service.id,
-                            'cash',
-                            transaction.cash,
-                            service.price,
-                            service.commission,
-                            isMainGirl
-                        );
+                    const field = transaction.lastModified;
+                    const valueToAdd = transaction[field] ?? 0;
 
-                    } else if (transaction.lastModified === 'card') {
-                        await updateTransactions(
-                            foundGirl.id,
-                            service.id,
-                            'card',
-                            transaction.card,
-                            service.price,
-                            service.commission,
-                            isMainGirl
-                        );
+                    const existingTransaction = snapshot.docs.find(doc =>
+                        doc.id === `${foundGirl.id}_${service.id}`
+                    )?.data();
 
-                    }
+
+                    const currentValue = existingTransaction?.[field] ?? 0;
+                    const newValue = isMainGirl ? valueToAdd : currentValue + valueToAdd;
+                    await updateTransactions(
+                        foundGirl.id,
+                        service.id,
+                        field,
+                        newValue,
+                        service.price,
+                        service.commission,
+                        isMainGirl
+                    );
+
+
                 }));
 
                 // Jutalék és összesítés frissítése
