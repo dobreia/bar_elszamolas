@@ -14,6 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-console.log(`🔥 Firestore adatbázis: ${process.env.REACT_APP_ENV === "production" ? "ÉLES" : "TESZT"}`);
+console.log("🔥 Firebase projekt:", process.env.REACT_APP_FIREBASE_PROJECT_ID);
+
 
 export { db };

@@ -10,12 +10,13 @@ const updateTotalSummary = async (service) => {
         let totalCash = 0;
         let totalCard = 0;
 
-         snapshot.docs.forEach(doc => {
+        snapshot.docs.forEach(doc => {
             const data = doc.data();
-            const price = data.servicePrice || 0;
-
-            totalCash += (data.cash || 0) * price;
-            totalCard += (data.card || 0) * price;
+            if (data.isCounted) {
+                const price = data.servicePrice || 0;
+                totalCash += (data.cash || 0) * price;
+                totalCard += (data.card || 0) * price;
+            }
         });
 
         const totalSum = totalCash + totalCard;

@@ -70,7 +70,7 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
             }
 
             // Minden kiválasztott lánynak frissítjük a tranzakcióit az első lány alapján
-            await Promise.all(selectedGirlsList.map(async (selectedGirlName) => {
+            await Promise.all(selectedGirlsList.map(async (selectedGirlName, index) => {
                 const foundGirl = selectedGirls.find(g => g.name === selectedGirlName);
                 if (!foundGirl) {
                     console.warn(`Nincs ilyen lány az adatbázisban: ${selectedGirlName}`);
@@ -79,16 +79,35 @@ const MultipleGirls = ({ girl, selectedGirls, service, onClose, onSave }) => {
 
                 // Minden egyes tranzakciót lemásolunk és frissítünk az új lánynak
                 await Promise.all(firstGirlTransactions.map(async (transaction) => {
+                    const isMainGirl = index === 0;
                     // Ellenőrizzük, hogy melyik érték változott utoljára
                     if (transaction.lastModified === 'cash') {
-                        await updateTransactions(foundGirl.id, service.id, 'cash', transaction.cash);
+                        await updateTransactions(
+                            foundGirl.id,
+                            service.id,
+                            'cash',
+                            transaction.cash,
+                            service.price,
+                            service.commission,
+                            isMainGirl
+                        );
+
                     } else if (transaction.lastModified === 'card') {
-                        await updateTransactions(foundGirl.id, service.id, 'card', transaction.card);
+                        await updateTransactions(
+                            foundGirl.id,
+                            service.id,
+                            'card',
+                            transaction.card,
+                            service.price,
+                            service.commission,
+                            isMainGirl
+                        );
+
                     }
                 }));
 
                 // Jutalék és összesítés frissítése
-                await updateCommissionSummary(foundGirl.id, service);
+                await updateCommissionSummary(foundGirl.id);
             }));
 
             onSave(selectedGirlsList);
